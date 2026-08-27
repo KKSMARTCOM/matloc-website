@@ -32,10 +32,10 @@ export default function Home() {
             {t("home.heroSubtitle")}
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-            <button className="btn-primary text-nowrap">
+            <Link href="/#devis" className="btn-primary text-nowrap">
               {t("actions.quote")}
               <ArrowRightIcon size={20} />
-            </button>
+            </Link>
 
             <Link
               href="/services"
