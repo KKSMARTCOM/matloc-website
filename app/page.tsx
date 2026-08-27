@@ -140,6 +140,7 @@ export default function Home() {
       </div>
 
       {/* Section Devis */}
+      <div id="devis" />
       <div className="py-20 bg-gray-50">
         <div className="container-site">
           <Reveal>

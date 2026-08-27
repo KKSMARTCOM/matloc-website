@@ -121,7 +121,7 @@ export default function DrawerContent({
           </div>
         </div>
         <Link
-          href="/contact#devis"
+          href="/#devis"
           onClick={onClose}
           className="flex items-center justify-center px-6 py-3 bg-[#F97316] hover:bg-[#EA6C0A] text-white font-semibold text-sm rounded-md no-underline transition-colors duration-150"
         >

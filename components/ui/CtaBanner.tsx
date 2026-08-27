@@ -37,7 +37,7 @@ export default function CtaBanner({ title, subtitle }: Props) {
             distance={50}
             className="flex flex-col md:flex-row items-center justify-center gap-4"
           >
-            <Link href="#" className="btn-primary">
+            <Link href="/#devis" className="btn-primary">
               {t("actions.quote")}
             </Link>
             <Link href="/contact" className="btn-outline">

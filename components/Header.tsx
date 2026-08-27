@@ -55,7 +55,7 @@ export default function Header() {
                 className="hidden lg:flex"
               />
               <Link
-                href="/contact#devis"
+                href="/#devis"
                 className="hidden lg:inline-flex py-2 px-5 bg-primary hover:bg-primary-hover text-white rounded-lg text-md font-bold"
               >
                 {t("actions.quote")}
