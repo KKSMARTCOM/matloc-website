@@ -56,6 +56,8 @@ const resources = {
         email: "Email",
         requestedService: "Service souhaité",
         detailedMessage: "Message détaillé",
+        success: "Votre demande a bien été envoyée.",
+        error: "Une erreur est survenue. Veuillez réessayer.",
       },
       footer: {
         description:
@@ -271,6 +273,8 @@ const resources = {
         email: "Email",
         requestedService: "Requested service",
         detailedMessage: "Detailed message",
+        success: "Your request has been sent successfully.",
+        error: "An error occurred. Please try again.",
       },
       footer: {
         description:

@@ -8,14 +8,42 @@ const ContactForm = () => {
   const { t } = useI18n();
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
-  const [subject, setSubject] = useState("");
+  const [subject, setSubject] = useState<
+    "Collaboration" | "Renseignements" | "Autres"
+  >("Collaboration");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [feedback, setFeedback] = useState<"success" | "error" | null>(null);
 
-  const handleSubmit = (e: React.SubmitEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => (window.location.href = "/"), 1000);
+    setFeedback(null);
+
+    try {
+      const response = await fetch("/api/forms", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "contact",
+          name,
+          email,
+          subject,
+          message,
+        }),
+      });
+
+      setFeedback(response.ok ? "success" : "error");
+      if (response.ok) {
+        setName("");
+        setEmail("");
+        setMessage("");
+      }
+    } catch {
+      setFeedback("error");
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <form
@@ -66,7 +94,14 @@ const ContactForm = () => {
             </label>
             <select
               value={subject}
-              onChange={(e) => setSubject(e.target.value)}
+              onChange={(e) =>
+                setSubject(
+                  e.target.value as
+                    | "Collaboration"
+                    | "Renseignements"
+                    | "Autres",
+                )
+              }
               className="w-full px-4 py-2 border border-primary/20 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary transition-all"
             >
               <option value="collab">{t("forms.collaboration")}</option>
@@ -91,6 +126,14 @@ const ContactForm = () => {
             </div>
           </div>
         </div>
+        {feedback && (
+          <p
+            role="status"
+            className={`mt-4 text-center ${feedback === "success" ? "text-success" : "text-error"}`}
+          >
+            {feedback === "success" ? t("forms.success") : t("forms.error")}
+          </p>
+        )}
         <button
           type="submit"
           className="flex justify-center py-4 rounded-lg cursor-pointer hover:bg-primary-hover items-center gap-2 bg-primary text-white w-full font-[600] mt-6"
