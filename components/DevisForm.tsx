@@ -6,20 +6,51 @@ import { useI18n } from "@/contexts/I18nContext";
 
 const DevisForm = () => {
   const { t } = useI18n();
-  const [status, setStatus] = useState<"particular" | "enterprise">(
-    "particular",
+  const [status, setStatus] = useState<"Particulier" | "Entreprise">(
+    "Particulier",
   );
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [service, setService] = useState("");
+  const [service, setService] = useState<
+    "hauteur" | "transport" | "equipment" | "travaux" | "others"
+  >("hauteur");
   const [message, setMessage] = useState("");
+  const [feedback, setFeedback] = useState<"success" | "error" | null>(null);
 
-  const handleSubmit = (e: React.SubmitEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => (window.location.href = "/"), 1000);
+    setFeedback(null);
+
+    try {
+      const response = await fetch("/api/forms", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "quote",
+          name,
+          phone,
+          email,
+          service,
+          status,
+          message,
+        }),
+      });
+
+      setFeedback(response.ok ? "success" : "error");
+      if (response.ok) {
+        setName("");
+        setPhone("");
+        setEmail("");
+        setMessage("");
+      }
+    } catch {
+      setFeedback("error");
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <form onSubmit={handleSubmit} className="p-4 rounded-md shadow-md bg-white">
@@ -31,12 +62,12 @@ const DevisForm = () => {
           <select
             value={status}
             onChange={(e) =>
-              setStatus(e.target.value as "particular" | "enterprise")
+              setStatus(e.target.value as "Particulier" | "Entreprise")
             }
             className="w-full px-4 py-2 border border-primary/20 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary transition-all"
           >
-            <option value="particular">{t("forms.individual")}</option>
-            <option value="enterprise">{t("forms.company")}</option>
+            <option value="Particulier">{t("forms.individual")}</option>
+            <option value="Entreprise">{t("forms.company")}</option>
           </select>
         </div>
         <div className="space-y-1.5">
@@ -90,14 +121,23 @@ const DevisForm = () => {
           </label>
           <select
             value={service}
-            onChange={(e) => setService(e.target.value)}
+            onChange={(e) =>
+              setService(
+                e.target.value as
+                  | "hauteur"
+                  | "transport"
+                  | "equipment"
+                  | "travaux"
+                  | "others",
+              )
+            }
             className="w-full px-4 py-2 border border-primary/20 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary transition-all"
           >
-            <option value="echafaudage">{t("service.height")}</option>
-            <option value="btp">{t("service.equipment")}</option>
-            <option value="elevation">{t("service.height")}</option>
+            <option value="hauteur">{t("service.height")}</option>
             <option value="transport">{t("service.transport")}</option>
-            <option value="chantier">{t("service.associated")}</option>
+            <option value="equipment">{t("service.equipment")}</option>
+            <option value="travaux">{t("service.associated")}</option>
+            <option value="others">{t("forms.other")}</option>
           </select>
         </div>
         <div className="space-y-1.5 col-span-1 md:col-span-2">
@@ -117,6 +157,14 @@ const DevisForm = () => {
           </div>
         </div>
       </div>
+      {feedback && (
+        <p
+          role="status"
+          className={`mt-4 text-center ${feedback === "success" ? "text-success" : "text-error"}`}
+        >
+          {feedback === "success" ? t("forms.success") : t("forms.error")}
+        </p>
+      )}
       <button
         type="submit"
         className="flex justify-center py-4 rounded-lg cursor-pointer hover:bg-primary-hover items-center gap-2 bg-primary text-white w-full font-[600] mt-6"

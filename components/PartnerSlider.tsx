@@ -5,19 +5,12 @@ import { Autoplay } from "swiper/modules";
 import Image from "next/image";
 
 const PARTNERS = [
-  { name: "Bénin BTP Services" },
-  { name: "Cotonou Travaux" },
-  { name: "Atlantique Construction" },
-  { name: "Génie Civil Plus" },
-  { name: "Littoral Ingénierie" },
-  { name: "Sahel Bâtiment" },
-  { name: "Ouémé Infrastructures" },
+  { logoUrl: "/assets/images/jpg/partner1.jpeg" },
+  { logoUrl: "/assets/images/jpg/partner2.jpeg" },
+  { logoUrl: "/assets/images/jpg/partner3.jpeg" },
+  { logoUrl: "/assets/images/jpg/partner4.jpeg" },
+  { logoUrl: "/assets/images/jpg/partner5.jpeg" },
 ];
-
-const logoUrl = (name: string) =>
-  `https://ui-avatars.com/api/?name=${encodeURIComponent(
-    name,
-  )}&background=random&color=fff&bold=true&size=128&format=png`;
 
 export default function PartnersSlider() {
   return (
@@ -41,10 +34,10 @@ export default function PartnersSlider() {
       {PARTNERS.map((partner, key) => (
         <SwiperSlide key={key} className="h-auto">
           <div className="group flex flex-col items-center justify-center gap-3 h-full py-4">
-            <div className="relative w-16 h-16 rounded-full overflow-hidden grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
+            <div className="relative w-38 h-16 rounded-full overflow-hidden grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
               <Image
-                src={logoUrl(partner.name)}
-                alt={partner.name}
+                src={partner.logoUrl}
+                alt={partner.logoUrl}
                 fill
                 className="object-cover"
               />
