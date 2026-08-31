@@ -42,7 +42,7 @@ export default function Reveal({
       className={className}
       initial={prefersReducedMotion ? false : { opacity: 0, ...offset }}
       whileInView={
-        prefersReducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }
+        prefersReducedMotion ? { opacity: 1, x: 0, y: 0 } : undefined
       }
       transition={{
         duration,

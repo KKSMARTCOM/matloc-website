@@ -19,7 +19,7 @@ export default function Home() {
       {/* Section Hero */}
       <div className="relative w-full flex justify-center items-center h-150 md:h-200">
         <Image
-          src="/assets/images/jpg/Hero.jpeg"
+          src="/assets/images/jpg/Hero2.jpeg"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
