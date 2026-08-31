@@ -357,6 +357,18 @@ body.mobile-menu-open header {
   width: 32px;
 }
 
+.reviews-slider .swiper-pagination-bullet {
+  background-color: var(--color-primary);
+  opacity: 0.3;
+  transition:
+    opacity 0.3s ease,
+    width 0.3s ease;
+}
+
+.reviews-slider .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
 @utility custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: rgba(156, 163, 175, 0.5) transparent;

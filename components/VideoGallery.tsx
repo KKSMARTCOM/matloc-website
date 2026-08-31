@@ -77,7 +77,7 @@ export default function VideoGallery() {
             href="/realisations"
             className="px-4 py-3 text-white bg-primary hover:bg-primary-hover rounded-md font-[600] inline-flex items-center gap-2"
           >
-            {t("actions.learnMore")}
+            {t("actions.seeMore")}
             <ArrowRightIcon size={18} />
           </Link>
         </Reveal>

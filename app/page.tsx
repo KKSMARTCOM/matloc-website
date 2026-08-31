@@ -11,7 +11,7 @@ import { ArrowRightIcon, CheckCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
-import GoogleReviews from "@/components/GoogleReviews";
+import { GoogleReviews } from "@/components/GoogleReviews";
 
 export default function Home() {
   const { t } = useI18n();
@@ -26,7 +26,7 @@ export default function Home() {
           className="object-cover"
           alt="Hero"
         />
-        <div className="absolute top-0 right-0 w-full h-full bg-linear-to-r from-secondary-hover from-10% via-secondary via-30% to-dark opacity-70" />
+        <div className="absolute top-0 right-0 w-full h-full bg-linear-to-r from-secondary-hover from-10% via-secondary via-30% to-dark opacity-60" />
         <div className="p-6 space-y-6 absolute text-white text-center w-full md:w-[60%]">
           <h1 className="section-title">{t("home.heroTitle")}</h1>
           <p className="section-subtitle text-white/80">
@@ -181,8 +181,8 @@ export default function Home() {
       {/* Testimonials */}
       <div className="container-site py-16">
         <SectionHeader
-          title="Ce que disent nos clients"
-          subtitle="Des avis authentiques laissés par nos clients sur Google, sur nos interventions et notre matériel de location"
+          title={t("home.reviews")}
+          subtitle={t("home.reviewsIntro")}
         />
         <GoogleReviews />
       </div>
