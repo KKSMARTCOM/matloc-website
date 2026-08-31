@@ -11,6 +11,7 @@ import { ArrowRightIcon, CheckCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
+import GoogleReviews from "@/components/GoogleReviews";
 
 export default function Home() {
   const { t } = useI18n();
@@ -175,6 +176,15 @@ export default function Home() {
             </Reveal>
           </div>
         </div>
+      </div>
+
+      {/* Testimonials */}
+      <div className="container-site py-16">
+        <SectionHeader
+          title="Ce que disent nos clients"
+          subtitle="Des avis authentiques laissés par nos clients sur Google, sur nos interventions et notre matériel de location"
+        />
+        <GoogleReviews />
       </div>
     </>
   );
