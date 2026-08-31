@@ -1,4 +1,5 @@
 import { SERVICE_OPTIONS } from "@/constants/form";
+import { renderContactEmail, renderQuoteEmail } from "@/components/emails/emails";
 import nodemailer from "nodemailer";
 
 type FormPayload = {
@@ -17,6 +18,17 @@ const isString = (value: unknown): value is string => typeof value === "string";
 const getRequiredValue = (value: unknown) =>
   isString(value) ? value.trim() : "";
 
+const getServiceLabel = (service: unknown) => {
+  const key = getRequiredValue(service);
+  return SERVICE_OPTIONS.find((option) => option.key === key)?.label;
+};
+
+const CONTACT_SUBJECTS: Record<string, string> = {
+  collab: "Collaboration",
+  info: "Renseignements",
+  other: "Autres",
+};
+
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as Partial<FormPayload>;
@@ -24,6 +36,11 @@ export async function POST(request: Request) {
     const name = getRequiredValue(body.name);
     const email = getRequiredValue(body.email);
     const message = getRequiredValue(body.message);
+    const phone = getRequiredValue(body.phone);
+    const status = getRequiredValue(body.status);
+    const service = getServiceLabel(body.service);
+    const subject = getRequiredValue(body.subject);
+    const contactSubject = CONTACT_SUBJECTS[subject] ?? subject;
 
     if (
       (formType !== "quote" && formType !== "contact") ||
@@ -55,6 +72,9 @@ export async function POST(request: Request) {
       port: smtpPort,
       secure: smtpPort === 465,
       auth: { user: smtpUser, pass: smtpPassword },
+      connectionTimeout: 15_000,
+      greetingTimeout: 15_000,
+      socketTimeout: 30_000,
     });
 
     const isQuote = formType === "quote";
@@ -66,8 +86,8 @@ export async function POST(request: Request) {
       isQuote && body.service
         ? `Service : ${getRequiredValue(SERVICE_OPTIONS.find((opt) => opt.key === body.service)?.label)}`
         : "",
-      !isQuote && body.subject
-        ? `Sujet : ${getRequiredValue(body.subject)}`
+      !isQuote && contactSubject
+        ? `Sujet : ${contactSubject}`
         : "",
       "",
       message,
@@ -75,12 +95,17 @@ export async function POST(request: Request) {
       .filter(Boolean)
       .join("\n");
 
+    const htmlEmail = isQuote
+      ? renderQuoteEmail({ name, email, phone, status, service, message })
+      : renderContactEmail({ name, email, subject: contactSubject, message });
+
     await transporter.sendMail({
       from: mailFrom,
       to: mailTo,
       replyTo: email,
       subject: isQuote ? `Demande de devis - ${name}` : `Contact - ${name}`,
       text: details,
+      html: htmlEmail,
     });
 
     return Response.json({ success: true });

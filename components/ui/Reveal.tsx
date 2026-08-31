@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import type { ReactNode } from "react";
+import { motion } from "motion/react";
+import { useSyncExternalStore, type ReactNode } from "react";
 
 type Direction = "up" | "down" | "left" | "right";
 
@@ -21,6 +21,20 @@ const OFFSETS: Record<Direction, { x?: number; y?: number }> = {
   right: { x: -30 },
 };
 
+const reducedMotionMediaQuery = "(prefers-reduced-motion: reduce)";
+
+const subscribeToReducedMotion = (onStoreChange: () => void) => {
+  const mediaQuery = window.matchMedia(reducedMotionMediaQuery);
+  mediaQuery.addEventListener("change", onStoreChange);
+  return () => mediaQuery.removeEventListener("change", onStoreChange);
+};
+
+const getReducedMotionPreference = () =>
+  window.matchMedia(reducedMotionMediaQuery).matches;
+
+// The server and the first client render both use `false`, avoiding a hydration mismatch.
+const getServerReducedMotionPreference = () => false;
+
 export default function Reveal({
   children,
   className = "",
@@ -29,7 +43,11 @@ export default function Reveal({
   distance,
   duration = 0.9,
 }: RevealProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeToReducedMotion,
+    getReducedMotionPreference,
+    getServerReducedMotionPreference,
+  );
 
   const base = OFFSETS[direction];
   const offset = {
