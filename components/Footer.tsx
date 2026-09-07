@@ -63,14 +63,30 @@ const CONTACT_ICONS = {
   ),
 };
 
+import { useCmsSettings } from "@/hooks/useCmsSettings";
+
 export default function Footer() {
   const { t } = useI18n();
+  const { get } = useCmsSettings("footer");
   const navKeys = [
     "nav.home",
     "nav.about",
     "nav.services",
     "nav.projects",
     "nav.contact",
+  ];
+
+  /* Liens sociaux avec URLs issues de la DB (fallback sur constants) */
+  const socialLinks = SOCIAL_LINKS.map((s) => ({
+    ...s,
+    href: get(`footer_${s.label.toLowerCase()}`, s.href),
+  }));
+
+  /* Coordonnées issues de la DB */
+  const contactInfo = [
+    { ...CONTACT_INFO[0], label: get("footer_address", CONTACT_INFO[0].label) },
+    { ...CONTACT_INFO[1], label: get("footer_phone",   CONTACT_INFO[1].label), href: `tel:${get("footer_phone", "+22901283102").replace(/\s/g, "")}` },
+    { ...CONTACT_INFO[2], label: get("footer_email",   CONTACT_INFO[2].label), href: `mailto:${get("footer_email", "info.matloc@gmail.com")}` },
   ];
   return (
     <footer
@@ -91,13 +107,13 @@ export default function Footer() {
               />
             </Link>
             <p className="text-md text-white/70 leading-relaxed max-w-55">
-              {t("footer.description")}
+              {get("footer_description", t("footer.description"))}
             </p>
             <div
               className="flex items-center gap-2 flex-wrap"
               aria-label={t("common.social")}
             >
-              {SOCIAL_LINKS.map((s) => (
+              {socialLinks.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
@@ -165,7 +181,7 @@ export default function Footer() {
               {t("footer.contact")}
             </h3>
             <ul className="flex flex-col gap-4" role="list">
-              {CONTACT_INFO.map((item) => (
+              {contactInfo.map((item) => (
                 <li
                   key={item.label}
                   className="flex items-start gap-2.5 text-sm text-white/70"
@@ -193,7 +209,7 @@ export default function Footer() {
       <div className="bg-[var(--color-bg-footer-bottom)] border-t border-white/10">
         <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-white/50">
-            © {new Date().getFullYear()} MATLOC BTP. {t("common.allRights")}
+            © {new Date().getFullYear()} {get("footer_copyright", "MATLOC BTP. Tous droits réservés.")}
           </p>
           <p className="text-xs text-white/40">
             {t("common.madeBy")}{" "}

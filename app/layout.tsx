@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import I18nProvider from "@/providers/I18nProvider";
+import SiteChrome from "@/components/SiteChrome";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -39,9 +38,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <I18nProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
         </I18nProvider>
       </body>
     </html>
