@@ -51,9 +51,9 @@ const ContactForm = () => {
       className="py-6 px-4 space-y-6 rounded-md shadow-md w-full bg-white"
     >
       <div className="space-y-2">
-        <h1 className="section-title text-secondary">
+        <h2 className="section-title text-secondary">
           {t("forms.messageTitle")}
-        </h1>
+        </h2>
         <p>{t("forms.messageIntro")}</p>
       </div>
       <div>

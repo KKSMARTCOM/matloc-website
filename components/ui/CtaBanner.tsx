@@ -26,7 +26,7 @@ export default function CtaBanner({ title, subtitle }: Props) {
           </Reveal>
 
           <Reveal duration={1} delay={0.2}>
-            <h1 className="section-title text-secondary">{translatedTitle}</h1>
+            <h2 className="section-title text-secondary">{translatedTitle}</h2>
           </Reveal>
           <Reveal duration={1} delay={0.2}>
             <p>{translatedSubtitle}</p>

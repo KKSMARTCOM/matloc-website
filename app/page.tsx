@@ -72,9 +72,9 @@ export default function Home() {
           delay={0.3}
           className="w-full md:w-1/2 space-y-6 text-md mt-10 md:mt-0 text-dark"
         >
-          <h1 className="section-title text-secondary">
+          <h2 className="section-title text-secondary">
             {t("home.expertise")}
-          </h1>
+          </h2>
           <p>{t("home.welcome")}</p>
           <p>{t("home.fleet")}</p>
           <div className="block sm:flex justify-between items-center">
@@ -145,9 +145,9 @@ export default function Home() {
       <div className="py-20 bg-gray-50">
         <div className="container-site">
           <Reveal>
-            <h1 className="section-title text-secondary mb-3">
+            <h2 className="section-title text-secondary mb-3">
               {t("home.quote")}
-            </h1>
+            </h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Reveal
