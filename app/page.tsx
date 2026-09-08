@@ -11,6 +11,7 @@ import { ArrowRightIcon, CheckCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/contexts/I18nContext";
+import { GoogleReviews } from "@/components/GoogleReviews";
 
 export default function Home() {
   const { t } = useI18n();
@@ -19,13 +20,13 @@ export default function Home() {
       {/* Section Hero */}
       <div className="relative w-full flex justify-center items-center h-150 md:h-200">
         <Image
-          src="/assets/images/jpg/Hero.jpeg"
+          src="/assets/images/jpg/Hero2.jpeg"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
           alt="Hero"
         />
-        <div className="absolute top-0 right-0 w-full h-full bg-linear-to-r from-secondary-hover from-10% via-secondary via-30% to-dark opacity-70" />
+        <div className="absolute top-0 right-0 w-full h-full bg-linear-to-r from-secondary-hover from-10% via-secondary via-30% to-dark opacity-60" />
         <div className="p-6 space-y-6 absolute text-white text-center w-full md:w-[60%]">
           <h1 className="section-title">{t("home.heroTitle")}</h1>
           <p className="section-subtitle text-white/80">
@@ -175,6 +176,15 @@ export default function Home() {
             </Reveal>
           </div>
         </div>
+      </div>
+
+      {/* Testimonials */}
+      <div className="container-site py-16">
+        <SectionHeader
+          title={t("home.reviews")}
+          subtitle={t("home.reviewsIntro")}
+        />
+        <GoogleReviews />
       </div>
     </>
   );

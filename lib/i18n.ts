@@ -15,6 +15,7 @@ const resources = {
         quote: "Demander un devis",
         contact: "Nous contacter",
         learnMore: "En savoir plus",
+        seeMore: "Voir plus",
         send: "Envoyer le message",
         sendRequest: "Envoyer la demande",
       },
@@ -90,6 +91,9 @@ const resources = {
         quoteIntro: "Demandez une estimation gratuite pour votre projet.",
         quoteText:
           "Notre équipe se tient à votre disposition pour vous offrir un devis sur-mesure adapté à vos besoins spécifiques. Remplissez simplement notre formulaire et nous vous répondrons dans les plus brefs délais.",
+        reviews: "Ce que disent nos clients",
+        reviewsIntro:
+          "Des avis authentiques laissés par nos clients sur Google, sur nos interventions et notre matériel de location",
       },
       pages: {
         about: "À propos",
@@ -232,6 +236,7 @@ const resources = {
         quote: "Request a quote",
         contact: "Contact us",
         learnMore: "Learn more",
+        seeMore: "See More",
         send: "Send message",
         sendRequest: "Send request",
       },
@@ -307,6 +312,9 @@ const resources = {
         quoteIntro: "Request a free estimate for your project.",
         quoteText:
           "Our team is available to provide a tailored quote that meets your specific needs. Simply fill out our form and we will get back to you shortly.",
+        reviews: "What our clients say",
+        reviewsIntro:
+          "Authentic reviews left by our clients on Google, regarding our interventions and rental equipment",
       },
       pages: {
         about: "About",

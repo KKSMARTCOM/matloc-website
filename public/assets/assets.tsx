@@ -173,14 +173,29 @@ export const MEMBERS: Member[] = [
     image: "/assets/images/jpg/Albin.jpeg",
   },
   {
+    name: "KOUASSI BOSSOU Emmanuela",
+    role: "Community manager",
+    image: "/assets/images/jpg/Kouassi.jpeg",
+  },
+  {
     name: "Appolinaire ATCHOUKOU",
     role: "Agent Commercial",
     image: "/assets/images/jpg/Appolinaire.jpeg",
   },
   {
-    name: "Mohamed MALIKI",
-    role: "Responsable Commercial et Logistique",
-    image: "/assets/images/jpg/Mohamed.jpeg",
+    name: "BODJRÈNOU Abigaël ",
+    role: "Assistante commerciale",
+    image: "/assets/images/jpg/Abigael.jpeg",
+  },
+  {
+    name: "BOCOKPEVI Chantal",
+    role: "Agent commerciale",
+    image: "/assets/images/jpg/chantal.jpeg",
+  },
+  {
+    name: "AKINDES THIERRY ALBERT ",
+    role: "Directeur Général",
+    image: "/assets/images/jpg/Thierry.jpeg",
   },
 ];
 
