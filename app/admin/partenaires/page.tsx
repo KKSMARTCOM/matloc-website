@@ -41,10 +41,10 @@ export default function AdminPartenairesPage() {
           <div className="flex justify-end mb-4">
             <button onClick={() => setModal({ open: true, item: { ...EMPTY } })}
               className="flex items-center gap-1.5 px-3 py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors">
-              <Plus size={14} /> Ajouter un partenaire
+              <Plus size={16} /> Ajouter un partenaire
             </button>
           </div>
-          {crud.loading ? <div className="flex justify-center py-12"><Loader2 size={20} className="animate-spin text-gray-400" /></div> : (
+          {crud.loading ? <div className="flex justify-center py-12"><Loader2 size={20} className="animate-spin text-gray-600" /></div> : (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               {crud.items.map((p) => (
                 <div key={p.id} className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-orange-200 transition-colors">
@@ -54,13 +54,13 @@ export default function AdminPartenairesPage() {
                       : <span className="text-xl font-bold text-gray-200">{p.name.slice(0,2).toUpperCase()}</span>}
                   </div>
                   <div className="px-2.5 py-2 border-t border-gray-100">
-                    <p className="text-xs font-semibold text-gray-700 truncate">{p.name}</p>
+                    <p className="text-sm font-semibold text-gray-700 truncate">{p.name}</p>
                     <div className="flex items-center justify-end gap-1 mt-1">
                       <button onClick={() => crud.save({ ...p, is_published: !p.is_published })}>
-                        {p.is_published ? <ToggleRight size={14} className="text-green-500" /> : <ToggleLeft size={14} className="text-gray-400" />}
+                        {p.is_published ? <ToggleRight size={16} className="text-green-500" /> : <ToggleLeft size={16} className="text-gray-600" />}
                       </button>
-                      <button onClick={() => setModal({ open: true, item: { ...p } })} className="p-0.5 hover:bg-blue-50 rounded"><Pencil size={12} className="text-blue-500" /></button>
-                      <button onClick={() => setConfirm({ open: true, id: p.id })} className="p-0.5 hover:bg-red-50 rounded"><Trash2 size={12} className="text-red-500" /></button>
+                      <button onClick={() => setModal({ open: true, item: { ...p } })} className="p-0.5 hover:bg-blue-50 rounded"><Pencil size={14} className="text-blue-500" /></button>
+                      <button onClick={() => setConfirm({ open: true, id: p.id })} className="p-0.5 hover:bg-red-50 rounded"><Trash2 size={14} className="text-red-500" /></button>
                     </div>
                   </div>
                 </div>
@@ -95,7 +95,7 @@ export default function AdminPartenairesPage() {
           <button onClick={close} className="flex-1 px-4 py-2 text-sm font-semibold border border-gray-200 rounded-lg hover:bg-gray-50">Annuler</button>
           <button onClick={async () => { const ok = await crud.save(modal.item); if (ok) close(); }} disabled={crud.saving}
             className="flex-1 px-4 py-2 text-sm font-semibold bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-60">
-            {crud.saving ? <Loader2 size={14} className="animate-spin mx-auto" /> : "Enregistrer"}
+            {crud.saving ? <Loader2 size={16} className="animate-spin mx-auto" /> : "Enregistrer"}
           </button>
         </div>
       </Modal>

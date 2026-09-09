@@ -12,14 +12,14 @@ export default function AdminCtaPage() {
 
   return (
     <>
-      <SaveBar title="Bannière CTA" description="Appel à l'action affiché en bas des pages." status={status} onSave={handleSave} />
+      <SaveBar description="Appel à l'action affiché en bas des pages." status={status} onSave={handleSave} />
       <div className="space-y-5">
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Textes</p>
+        <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+          <p className="text-sm font-bold text-gray-600 uppercase tracking-widest mb-5">Textes</p>
           <FieldList fields={textFields} loading={loading} onChange={handleChange} multilineKeys={["cta_title","cta_subtitle"]} />
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Boutons</p>
+        <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+          <p className="text-sm font-bold text-gray-600 uppercase tracking-widest mb-5">Boutons</p>
           <FieldList fields={btnFields} loading={loading} onChange={handleChange} cols={2} />
         </div>
       </div>

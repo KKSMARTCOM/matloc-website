@@ -53,12 +53,12 @@ export default function VideoField({ label = "Vidéo", value, onChange, hint }: 
             onClick={() => { onChange(""); setUrlInput(""); }}
             className="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-red-50"
           >
-            <X size={13} className="text-red-500" />
+            <X size={15} className="text-red-500" />
           </button>
         </div>
       ) : (
         <div className="h-24 rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 flex items-center justify-center">
-          <Play size={28} className="text-gray-300" />
+          <Play size={28} className="text-gray-500" />
         </div>
       )}
 
@@ -69,7 +69,7 @@ export default function VideoField({ label = "Vidéo", value, onChange, hint }: 
             className={`flex-1 flex items-center justify-center gap-1.5 py-2 font-medium transition-colors ${
               tab === t ? "bg-orange-50 text-orange-600" : "text-gray-500 hover:bg-gray-50"
             }`}>
-            {t === "url" ? <Link2 size={14} /> : <Upload size={14} />}
+            {t === "url" ? <Link2 size={16} /> : <Upload size={16} />}
             {t === "url" ? "URL externe" : "Importer une vidéo"}
           </button>
         ))}
@@ -98,8 +98,8 @@ export default function VideoField({ label = "Vidéo", value, onChange, hint }: 
             <Loader2 size={22} className="animate-spin text-orange-500" />
           ) : (
             <>
-              <Upload size={22} className="text-gray-400" />
-              <span className="text-xs text-gray-500">MP4, WEBM — max 100 Mo</span>
+              <Upload size={22} className="text-gray-600" />
+              <span className="text-sm text-gray-500">MP4, WEBM — max 100 Mo</span>
             </>
           )}
           <input ref={fileRef} type="file" accept="video/mp4,video/webm,video/ogg"
@@ -107,8 +107,8 @@ export default function VideoField({ label = "Vidéo", value, onChange, hint }: 
         </label>
       )}
 
-      {error && <p className="text-xs text-red-500 flex items-center gap-1"><X size={12} />{error}</p>}
-      {hint  && <p className="text-xs text-gray-400">{hint}</p>}
+      {error && <p className="text-xs text-red-500 flex items-center gap-1"><X size={14} />{error}</p>}
+      {hint  && <p className="text-sm text-gray-600">{hint}</p>}
     </div>
   );
 }

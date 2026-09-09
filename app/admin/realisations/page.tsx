@@ -45,10 +45,10 @@ export default function AdminRealisationsPage() {
           <div className="flex justify-end mb-4">
             <button onClick={() => setModal({ open: true, item: { ...EMPTY } })}
               className="flex items-center gap-1.5 px-3 py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors">
-              <Plus size={14} /> Ajouter
+              <Plus size={16} /> Ajouter
             </button>
           </div>
-          {crud.loading ? <div className="flex justify-center py-12"><Loader2 size={20} className="animate-spin text-gray-400" /></div> : (
+          {crud.loading ? <div className="flex justify-center py-12"><Loader2 size={20} className="animate-spin text-gray-600" /></div> : (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {crud.items.map((a) => (
                 <div key={a.id} className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-orange-200 transition-colors">
@@ -57,15 +57,15 @@ export default function AdminRealisationsPage() {
                     <div className="absolute inset-0 bg-black/20" />
                     <div className="absolute top-1.5 right-1.5 flex gap-1">
                       <button onClick={() => crud.save({ ...a, is_published: !a.is_published })} className="p-0.5 bg-white/90 rounded">
-                        {a.is_published ? <ToggleRight size={14} className="text-green-500" /> : <ToggleLeft size={14} className="text-gray-400" />}
+                        {a.is_published ? <ToggleRight size={16} className="text-green-500" /> : <ToggleLeft size={16} className="text-gray-600" />}
                       </button>
-                      <button onClick={() => setModal({ open: true, item: { ...a } })} className="p-0.5 bg-white/90 rounded"><Pencil size={12} className="text-blue-500" /></button>
-                      <button onClick={() => setConfirm({ open: true, id: a.id })} className="p-0.5 bg-white/90 rounded"><Trash2 size={12} className="text-red-500" /></button>
+                      <button onClick={() => setModal({ open: true, item: { ...a } })} className="p-0.5 bg-white/90 rounded"><Pencil size={14} className="text-blue-500" /></button>
+                      <button onClick={() => setConfirm({ open: true, id: a.id })} className="p-0.5 bg-white/90 rounded"><Trash2 size={14} className="text-red-500" /></button>
                     </div>
                   </div>
                   <div className="px-2.5 py-2">
-                    <p className="text-xs font-semibold text-gray-800 truncate">{a.title}</p>
-                    <span className="text-[10px] text-gray-400">{a.category}</span>
+                    <p className="text-sm font-semibold text-gray-800 truncate">{a.title}</p>
+                    <span className="text-[10px] text-gray-600">{a.category}</span>
                   </div>
                 </div>
               ))}
@@ -107,7 +107,7 @@ export default function AdminRealisationsPage() {
           <button onClick={close} className="flex-1 px-4 py-2 text-sm font-semibold border border-gray-200 rounded-lg hover:bg-gray-50">Annuler</button>
           <button onClick={async () => { const ok = await crud.save(modal.item); if (ok) close(); }} disabled={crud.saving}
             className="flex-1 px-4 py-2 text-sm font-semibold bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-60">
-            {crud.saving ? <Loader2 size={14} className="animate-spin mx-auto" /> : "Enregistrer"}
+            {crud.saving ? <Loader2 size={16} className="animate-spin mx-auto" /> : "Enregistrer"}
           </button>
         </div>
       </Modal>

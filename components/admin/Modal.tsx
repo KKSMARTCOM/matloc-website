@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { X } from "lucide-react";
 import { useEffect } from "react";
@@ -29,7 +29,7 @@ export default function Modal({ open, onClose, title, children, size = "md" }: P
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
           <h3 className="text-lg font-bold text-gray-900">{title}</h3>
-          <button onClick={onClose} className="p-1.5 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+          <button onClick={onClose} className="p-1.5 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-600 transition-colors">
             <X size={18} />
           </button>
         </div>

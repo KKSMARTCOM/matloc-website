@@ -12,14 +12,14 @@ export default function AdminSeoPage() {
 
   return (
     <>
-      <SaveBar title="SEO & Métadonnées" description="Informations indexées par les moteurs de recherche." status={status} onSave={handleSave} />
+      <SaveBar description="Informations indexées par les moteurs de recherche." status={status} onSave={handleSave} />
       <div className="space-y-5">
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Identité</p>
+        <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+          <p className="text-sm font-bold text-gray-600 uppercase tracking-widest mb-5">Identité du site</p>
           <FieldList fields={nameField} loading={loading} onChange={handleChange} />
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Page d&apos;accueil</p>
+        <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+          <p className="text-sm font-bold text-gray-600 uppercase tracking-widest mb-5">Page d&apos;accueil</p>
           <FieldList fields={metaFields} loading={loading} onChange={handleChange} multilineKeys={["seo_home_description"]} />
         </div>
       </div>

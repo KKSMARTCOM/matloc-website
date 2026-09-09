@@ -51,13 +51,13 @@ export default function ImageField({ label = "Image", value, onChange, hint }: P
             onClick={() => { onChange(""); setUrlInput(""); }}
             className="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-red-50"
           >
-            <X size={13} className="text-red-500" />
+            <X size={15} className="text-red-500" />
           </button>
           <p className="absolute bottom-0 inset-x-0 bg-black/50 text-white text-[10px] px-2 py-1 truncate">{value}</p>
         </div>
       ) : (
         <div className="h-24 rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 flex items-center justify-center">
-          <ImageIcon size={28} className="text-gray-300" />
+          <ImageIcon size={28} className="text-gray-500" />
         </div>
       )}
 
@@ -69,7 +69,7 @@ export default function ImageField({ label = "Image", value, onChange, hint }: P
               tab === t ? "bg-orange-50 text-orange-600" : "text-gray-500 hover:bg-gray-50"
             }`}
           >
-            {t === "url" ? <Link2 size={14} /> : <Upload size={14} />}
+            {t === "url" ? <Link2 size={16} /> : <Upload size={16} />}
             {t === "url" ? "URL externe" : "Importer un fichier"}
           </button>
         ))}
@@ -100,8 +100,8 @@ export default function ImageField({ label = "Image", value, onChange, hint }: P
               <Loader2 size={22} className="animate-spin text-orange-500" />
             ) : (
               <>
-                <Upload size={22} className="text-gray-400" />
-                <span className="text-xs text-gray-500">Cliquez ou glissez une image (JPG, PNG, WEBP — max 5 Mo)</span>
+                <Upload size={22} className="text-gray-600" />
+                <span className="text-sm text-gray-500">Cliquez ou glissez une image (JPG, PNG, WEBP — max 5 Mo)</span>
               </>
             )}
             <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml"
@@ -110,8 +110,8 @@ export default function ImageField({ label = "Image", value, onChange, hint }: P
         </div>
       )}
 
-      {error && <p className="text-xs text-red-500 flex items-center gap-1"><X size={12} />{error}</p>}
-      {hint && <p className="text-xs text-gray-400">{hint}</p>}
+      {error && <p className="text-xs text-red-500 flex items-center gap-1"><X size={14} />{error}</p>}
+      {hint && <p className="text-sm text-gray-600">{hint}</p>}
     </div>
   );
 }

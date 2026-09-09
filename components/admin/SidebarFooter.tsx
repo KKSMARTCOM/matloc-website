@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ExternalLink, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import ConfirmDialog from "@/components/admin/ConfirmDialog";
 
 export default function SidebarFooter() {
@@ -18,19 +18,10 @@ export default function SidebarFooter() {
 
   return (
     <>
-      <div className="px-4 py-5 border-t border-white/10 space-y-1 shrink-0">
-        <Link
-          href="/"
-          target="_blank"
-          className="flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium text-white/40 hover:text-white hover:bg-white/10 transition-all duration-150"
-        >
-          <ExternalLink size={16} className="shrink-0" />
-          Voir le site
-        </Link>
-
+      <div className="px-3 pb-4 shrink-0">
         <button
           onClick={() => setConfirmLogout(true)}
-          className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium text-white/40 hover:text-red-400 hover:bg-white/10 transition-all duration-150"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-red-500 hover:bg-red-50 transition-all duration-150"
         >
           <LogOut size={16} className="shrink-0" />
           Déconnexion

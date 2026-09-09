@@ -72,21 +72,21 @@ export default function AdminAboutPage() {
           <div className="flex justify-end mb-4">
             <button onClick={() => setValueModal({ open: true, item: { ...EMPTY_VALUE } })}
               className="flex items-center gap-1.5 px-3 py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors">
-              <Plus size={14} /> Ajouter une valeur
+              <Plus size={16} /> Ajouter une valeur
             </button>
           </div>
-          {values.loading ? <div className="flex justify-center py-12"><Loader2 size={20} className="animate-spin text-gray-400" /></div> : (
+          {values.loading ? <div className="flex justify-center py-12"><Loader2 size={20} className="animate-spin text-gray-600" /></div> : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3">
               {values.items.map((v) => (
                 <div key={v.id} className="bg-white rounded-xl border border-gray-200 p-4 hover:border-orange-200 transition-colors">
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
                       <p className="font-semibold text-sm text-gray-900">{v.title}</p>
-                      <p className="text-xs text-gray-500 mt-1 line-clamp-2">{v.subtitle}</p>
+                      <p className="text-sm text-gray-500 mt-1 line-clamp-2">{v.subtitle}</p>
                     </div>
                     <div className="flex gap-1 shrink-0">
-                      <button onClick={() => setValueModal({ open: true, item: { ...v } })} className="p-1.5 rounded hover:bg-blue-50"><Pencil size={13} className="text-blue-500" /></button>
-                      <button onClick={() => setValueConfirm({ open: true, id: v.id })} className="p-1.5 rounded hover:bg-red-50"><Trash2 size={13} className="text-red-500" /></button>
+                      <button onClick={() => setValueModal({ open: true, item: { ...v } })} className="p-1.5 rounded hover:bg-blue-50"><Pencil size={15} className="text-blue-500" /></button>
+                      <button onClick={() => setValueConfirm({ open: true, id: v.id })} className="p-1.5 rounded hover:bg-red-50"><Trash2 size={15} className="text-red-500" /></button>
                     </div>
                   </div>
                 </div>
@@ -102,10 +102,10 @@ export default function AdminAboutPage() {
           <div className="flex justify-end mb-4">
             <button onClick={() => setMemberModal({ open: true, item: { ...EMPTY_MEMBER } })}
               className="flex items-center gap-1.5 px-3 py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors">
-              <Plus size={14} /> Ajouter un membre
+              <Plus size={16} /> Ajouter un membre
             </button>
           </div>
-          {members.loading ? <div className="flex justify-center py-12"><Loader2 size={20} className="animate-spin text-gray-400" /></div> : (
+          {members.loading ? <div className="flex justify-center py-12"><Loader2 size={20} className="animate-spin text-gray-600" /></div> : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {members.items.map((m) => (
                 <div key={m.id} className="flex items-center gap-3 bg-white rounded-xl border border-gray-200 p-3 hover:border-orange-200 transition-colors">
@@ -114,11 +114,11 @@ export default function AdminAboutPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-gray-900 truncate">{m.name}</p>
-                    <p className="text-xs text-gray-500 truncate">{m.role}</p>
+                    <p className="text-sm text-gray-500 truncate">{m.role}</p>
                   </div>
                   <div className="flex gap-1 shrink-0">
-                    <button onClick={() => setMemberModal({ open: true, item: { ...m } })} className="p-1.5 rounded hover:bg-blue-50"><Pencil size={13} className="text-blue-500" /></button>
-                    <button onClick={() => setMemberConfirm({ open: true, id: m.id })} className="p-1.5 rounded hover:bg-red-50"><Trash2 size={13} className="text-red-500" /></button>
+                    <button onClick={() => setMemberModal({ open: true, item: { ...m } })} className="p-1.5 rounded hover:bg-blue-50"><Pencil size={15} className="text-blue-500" /></button>
+                    <button onClick={() => setMemberConfirm({ open: true, id: m.id })} className="p-1.5 rounded hover:bg-red-50"><Trash2 size={15} className="text-red-500" /></button>
                   </div>
                 </div>
               ))}
@@ -130,19 +130,19 @@ export default function AdminAboutPage() {
       {/* Modals valeur */}
       <Modal open={valueModal.open} onClose={() => setValueModal({ open: false, item: { ...EMPTY_VALUE } })} title={valueModal.item.id ? "Modifier" : "Nouvelle valeur"} size="sm">
         <div className="space-y-3">
-          <label className="block text-xs font-semibold text-gray-600">Titre *
+          <label className="block text-sm font-semibold text-gray-600">Titre *
             <input type="text" value={valueModal.item.title ?? ""} onChange={(e) => setValueModal((m) => ({ ...m, item: { ...m.item, title: e.target.value } }))}
-              className="mt-1 w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg outline-none focus:border-orange-400 transition" />
+              className="mt-1 w-full px-4 py-3 text-[15px] bg-white border border-gray-200 rounded-lg outline-none focus:border-orange-400 transition" />
           </label>
-          <label className="block text-xs font-semibold text-gray-600">Description
+          <label className="block text-sm font-semibold text-gray-600">Description
             <textarea rows={3} value={valueModal.item.subtitle ?? ""} onChange={(e) => setValueModal((m) => ({ ...m, item: { ...m.item, subtitle: e.target.value } }))}
-              className="mt-1 w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg outline-none focus:border-orange-400 transition resize-none" />
+              className="mt-1 w-full px-4 py-3 text-[15px] bg-white border border-gray-200 rounded-lg outline-none focus:border-orange-400 transition resize-none" />
           </label>
           <div className="flex gap-2 pt-1">
-            <button onClick={() => setValueModal({ open: false, item: { ...EMPTY_VALUE } })} className="flex-1 px-3 py-2 text-sm font-semibold border border-gray-200 rounded-lg hover:bg-gray-50">Annuler</button>
+            <button onClick={() => setValueModal({ open: false, item: { ...EMPTY_VALUE } })} className="flex-1 px-4 py-3 text-[15px] font-semibold border border-gray-200 rounded-lg hover:bg-gray-50">Annuler</button>
             <button onClick={async () => { const ok = await values.save(valueModal.item); if (ok) setValueModal({ open: false, item: { ...EMPTY_VALUE } }); }} disabled={values.saving}
-              className="flex-1 px-3 py-2 text-sm font-semibold bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-60">
-              {values.saving ? <Loader2 size={14} className="animate-spin mx-auto" /> : "Enregistrer"}
+              className="flex-1 px-4 py-3 text-[15px] font-semibold bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-60">
+              {values.saving ? <Loader2 size={16} className="animate-spin mx-auto" /> : "Enregistrer"}
             </button>
           </div>
         </div>
@@ -170,10 +170,10 @@ export default function AdminAboutPage() {
             hint="Photo portrait recommandée"
           />
           <div className="flex gap-2 pt-1">
-            <button onClick={() => setMemberModal({ open: false, item: { ...EMPTY_MEMBER } })} className="flex-1 px-3 py-2 text-sm font-semibold border border-gray-200 rounded-lg hover:bg-gray-50">Annuler</button>
+            <button onClick={() => setMemberModal({ open: false, item: { ...EMPTY_MEMBER } })} className="flex-1 px-4 py-3 text-[15px] font-semibold border border-gray-200 rounded-lg hover:bg-gray-50">Annuler</button>
             <button onClick={async () => { const ok = await members.save(memberModal.item); if (ok) setMemberModal({ open: false, item: { ...EMPTY_MEMBER } }); }} disabled={members.saving}
-              className="flex-1 px-3 py-2 text-sm font-semibold bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-60">
-              {members.saving ? <Loader2 size={14} className="animate-spin mx-auto" /> : "Enregistrer"}
+              className="flex-1 px-4 py-3 text-[15px] font-semibold bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-60">
+              {members.saving ? <Loader2 size={16} className="animate-spin mx-auto" /> : "Enregistrer"}
             </button>
           </div>
         </div>

@@ -386,3 +386,32 @@ body.mobile-menu-open header {
   border-radius: 2px;
   opacity: 0.35;
 }
+
+/* ============================================================
+   ADMIN — Taille de base augmentée
+   ============================================================ */
+.admin-shell {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.admin-shell h1 { font-size: 1.6rem; }
+.admin-shell h2 { font-size: 1.25rem; }
+.admin-shell h3 { font-size: 1.1rem; }
+
+.admin-shell input,
+.admin-shell textarea,
+.admin-shell select {
+  font-size: 0.975rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+.admin-shell label { font-size: 0.9rem; }
+
+.admin-shell button { font-size: 0.9rem; }
+
+.admin-shell nav a { font-size: 0.9rem; }
+
+.admin-shell table td,
+.admin-shell table th { font-size: 0.9rem; }

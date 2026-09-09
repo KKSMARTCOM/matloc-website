@@ -64,9 +64,9 @@ export default function AdminUsersPage() {
   };
 
   const roleIcon  = (u: AdminUser) =>
-    u.is_owner  ? <Crown       size={14} className="text-yellow-500" /> :
-    u.role === "admin" ? <ShieldCheck size={14} className="text-blue-500" /> :
-    <User size={14} className="text-gray-400" />;
+    u.is_owner  ? <Crown       size={16} className="text-yellow-500" /> :
+    u.role === "admin" ? <ShieldCheck size={16} className="text-blue-500" /> :
+    <User size={16} className="text-gray-600" />;
 
   const roleLabel = (u: AdminUser) =>
     u.is_owner ? "Propriétaire" : u.role === "admin" ? "Admin" : "Collaborateur";
@@ -80,50 +80,44 @@ export default function AdminUsersPage() {
         onSave={() => {}}
         extra={
           <button onClick={() => { setForm(EMPTY); setError(null); setModal(true); }}
-            className="flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 text-gray-700 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-colors">
-            <Plus size={16} /> Ajouter un utilisateur
+            className="flex items-center gap-2 px-5 py-2.5 bg-[#1a2540] text-white text-sm font-semibold rounded-xl hover:bg-[#243357] transition-colors">
+            <Plus size={15} /> Ajouter un utilisateur
           </button>
         }
       />
 
-      {/* Liste */}
       {loading ? (
-        <div className="flex justify-center py-20"><Loader2 size={26} className="animate-spin text-gray-400" /></div>
+        <div className="flex justify-center py-20"><Loader2 size={24} className="animate-spin text-gray-500" /></div>
       ) : (
-        <div className="space-y-3">
-          {users.map((u) => (
-            <div key={u.id} className="flex items-center gap-5 bg-white rounded-xl border border-gray-200 px-6 py-5 hover:border-gray-300 transition-colors">
-              {/* Avatar initiales */}
-              <div className="w-11 h-11 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
-                <span className="text-base font-bold text-orange-600">
-                  {u.name.charAt(0).toUpperCase()}
-                </span>
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          {users.length === 0 && (
+            <p className="text-center text-sm text-gray-600 py-12">Aucun utilisateur.</p>
+          )}
+          {users.map((u, idx) => (
+            <div key={u.id} className={`flex items-center gap-4 px-6 py-4 hover:bg-gray-50 transition-colors ${idx > 0 ? "border-t border-gray-50" : ""}`}>
+              <div className="w-10 h-10 rounded-xl bg-[#1a2540] flex items-center justify-center shrink-0">
+                <span className="text-sm font-bold text-white">{u.name.charAt(0).toUpperCase()}</span>
               </div>
-
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <p className="font-semibold text-gray-900">{u.name}</p>
+                  <p className="font-semibold text-sm text-gray-900">{u.name}</p>
                   <span className={`inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full ${
-                    u.is_owner        ? "bg-yellow-50 text-yellow-700" :
+                    u.is_owner         ? "bg-yellow-50 text-yellow-700" :
                     u.role === "admin" ? "bg-blue-50 text-blue-700" :
-                    "bg-gray-100 text-gray-600"
+                                        "bg-gray-100 text-gray-500"
                   }`}>
                     {roleIcon(u)} {roleLabel(u)}
                   </span>
                 </div>
-                <p className="text-sm text-gray-500 mt-0.5">{u.email}</p>
+                <p className="text-sm text-gray-600 mt-0.5">{u.email}</p>
               </div>
-
-              <p className="text-xs text-gray-400 shrink-0 hidden sm:block">
-                Ajouté le {new Date(u.created_at).toLocaleDateString("fr-FR")}
+              <p className="text-sm text-gray-500 shrink-0 hidden sm:block">
+                {new Date(u.created_at).toLocaleDateString("fr-FR")}
               </p>
-
               {!u.is_owner && (
-                <button
-                  onClick={() => setConfirm({ open: true, id: u.id, name: u.name })}
-                  className="p-2 rounded-lg text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors shrink-0"
-                >
-                  <Trash2 size={17} />
+                <button onClick={() => setConfirm({ open: true, id: u.id, name: u.name })}
+                  className="p-2 rounded-lg text-gray-500 hover:bg-red-50 hover:text-red-500 transition-colors shrink-0">
+                  <Trash2 size={16} />
                 </button>
               )}
             </div>
@@ -163,7 +157,7 @@ export default function AdminUsersPage() {
           <div className="flex gap-3 pt-2">
             <button onClick={() => setModal(false)} className="flex-1 px-4 py-3 text-sm font-semibold border border-gray-200 rounded-xl hover:bg-gray-50">Annuler</button>
             <button onClick={handleCreate} disabled={saving}
-              className="flex-1 px-4 py-3 text-sm font-semibold bg-orange-500 text-white rounded-xl hover:bg-orange-600 disabled:opacity-60">
+              className="flex-1 px-4 py-3 text-sm font-semibold bg-[#1a2540] text-white rounded-xl hover:bg-[#243357] disabled:opacity-60">
               {saving ? <Loader2 size={16} className="animate-spin mx-auto" /> : "Créer le compte"}
             </button>
           </div>

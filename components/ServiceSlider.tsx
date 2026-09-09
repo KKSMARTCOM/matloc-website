@@ -6,7 +6,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { CogIcon, MoveVerticalIcon, VanIcon, WrenchIcon } from "lucide-react";
 import { SERVICES } from "@/public/assets/assets";
 import ServiceSliderCard from "./ui/ServiceSliderCard";
-import { useI18n } from "@/contexts/I18nContext";
 import type { DbService } from "@/lib/db";
 import type React from "react";
 
@@ -25,7 +24,6 @@ const fallback: SlideItem[] = SERVICES.map((s) => ({
 }));
 
 export default function ServicesSlider() {
-  const { t } = useI18n();
   const [slides, setSlides] = useState<SlideItem[]>(fallback);
 
   useEffect(() => {
@@ -35,17 +33,15 @@ export default function ServicesSlider() {
         const pub = (d?.items ?? []).filter((s) => s.is_published);
         if (pub.length) {
           setSlides(pub.map((s) => ({
-            id: s.id,
-            icon: iconMap[s.id] ?? iconMap.default,
-            title: t(`data.services.${s.id}.title`) !== `data.services.${s.id}.title`
-              ? t(`data.services.${s.id}.title`) : s.title,
-            subtitle: t(`data.services.${s.id}.subtitle`) !== `data.services.${s.id}.subtitle`
-              ? t(`data.services.${s.id}.subtitle`) : s.subtitle,
+            id:       s.id,
+            icon:     iconMap[s.id] ?? iconMap.default,
+            title:    s.title,    /* DB en priorité absolue */
+            subtitle: s.subtitle,  /* DB en priorité absolue */
           })));
         }
       })
       .catch(() => undefined);
-  }, [t]);
+  }, []);
 
   const canLoop = slides.length >= 6;
 
