@@ -188,9 +188,19 @@ export const MEMBERS: Member[] = [
     image: "/assets/images/jpg/Abigael.jpeg",
   },
   {
+    name: "MALIKI Tidjani",
+    role: "Responsable marketing et logistique",
+    image: "/assets/images/jpg/Mohamed.jpeg",
+  },
+  {
     name: "BOCOKPEVI Chantal",
     role: "Agent commerciale",
     image: "/assets/images/jpg/chantal.jpeg",
+  },
+  {
+    name: "LEKE Landry",
+    role: "Assistant comptable",
+    image: "/assets/images/jpg/landry.jpeg",
   },
   {
     name: "AKINDES THIERRY ALBERT ",
@@ -207,25 +217,25 @@ export interface Video {
 
 export const VIDEOS: Video[] = [
   {
-    title: "Chantier de terrassement — Cotonou",
+    title: "Installation d’échafaudage au niveau de la pharmacie la Madone",
     thumbnail: "/assets/images/png/achievement1.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787568537/20250509_140541.mp4",
   },
   {
-    title: "Location d'échafaudages — Porto-Novo",
+    title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
     thumbnail: "/assets/images/png/achievement2.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567926/20251119_152338.mp4",
   },
   {
-    title: "Transport de matériaux BTP",
+    title: "Extension du port autonome de Cotonou",
     thumbnail: "/assets/images/png/achievement3.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567921/20260113_104734.mp4",
   },
   {
-    title: "Engins de terrassement en action",
+    title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
     thumbnail: "/assets/images/png/achievement4.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567920/20251119_152422.mp4",
@@ -242,25 +252,26 @@ export interface Achievement {
 
 export const ACHIEVEMENT_CATEGORIES = [
   "Tous",
-  "Infrastructures routières",
-  "Zones industrielles",
-  "Ports",
-  "Assainissement urbain",
+  "Transport d’agrégats",
+  "Travaux sur un navire",
+  "Travaux en hauteur",
+  "Travaux d’assainissement",
+  "Travaux de terrassement",
 ];
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
     id: 1,
-    title: "Réhabilitation du pont de Porto-Novo",
-    category: "Infrastructures routières",
+    title: "Installation d’échafaudage au niveau de la pharmacie la Madone",
+    category: "Travaux en hauteur",
     thumbnail: "/assets/images/png/achievement1.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787568537/20250509_140541.mp4",
   },
   {
     id: 2,
-    title: "Zone industrielle de Sèmè-Kpodji",
-    category: "Zones industrielles",
+    title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
+    category: "Transport d’agrégats",
     thumbnail: "/assets/images/png/achievement2.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567926/20251119_152338.mp4",
@@ -268,34 +279,85 @@ export const ACHIEVEMENTS: Achievement[] = [
   {
     id: 3,
     title: "Extension du port autonome de Cotonou",
-    category: "Ports",
+    category: "Travaux sur un navire",
     thumbnail: "/assets/images/png/achievement3.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567921/20260113_104734.mp4",
   },
   {
     id: 4,
-    title: "Réseau d'assainissement — Abomey-Calavi",
-    category: "Assainissement urbain",
+    title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
+    category: "Transport d’agrégats",
     thumbnail: "/assets/images/png/achievement4.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567920/20251119_152422.mp4",
   },
   {
     id: 5,
-    title: "Terrassement chantier routier RNIE",
-    category: "Infrastructures routières",
+    title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
+    category: "Transport d’agrégats",
     thumbnail: "/assets/images/png/achievement5.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567908/20251119_152307.mp4",
   },
   {
     id: 6,
-    title: "Terrassement chantier routier Porto-Novo",
-    category: "Infrastructures routières",
+    title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
+    category: "Transport d’agrégats",
     thumbnail: "/assets/images/png/achievement6.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567927/20251119_152651.mp4",
+  },
+  {
+    id: 7,
+    title:
+      "Chantier d’installation d’échafaudage au niveau de la pharmacie la Madone.",
+    category: "Travaux en hauteur",
+    thumbnail: "/assets/images/png/20250509_140731.png",
+    videoUrl:
+      "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503898/20250509_140731.mp4",
+  },
+  {
+    id: 8,
+    title:
+      "Mise à disposition d’une nacelle ciseau pour des travaux au SOFITEL BENIN",
+    category: "Travaux en hauteur",
+    thumbnail: "/assets/images/png/20250901_094502.png",
+    videoUrl:
+      "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503394/20250901_094502.mp4",
+  },
+  {
+    id: 9,
+    title:
+      "Mise à disposition d’une nacelle ciseau pour des travaux au SOFITEL BENIN",
+    category: "Travaux en hauteur",
+    thumbnail: "/assets/images/png/20250901_100258.png",
+    videoUrl:
+      "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503387/20250901_100258.mp4",
+  },
+  {
+    id: 10,
+    title: "Assainissement à Akpakpa",
+    category: "Travaux d’assainissement",
+    thumbnail: "/assets/images/png/20260420_095058.png",
+    videoUrl:
+      "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503301/20260420_095058.mp4",
+  },
+  {
+    id: 11,
+    title: "Assainissement à Akpakpa",
+    category: "Travaux d’assainissement",
+    thumbnail: "/assets/images/png/20260420_095109.png",
+    videoUrl:
+      "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503995/20260420_095109.mp4",
+  },
+  {
+    id: 12,
+    title: "Terrassement sur un site au niveau de Grand-Popo",
+    category: "Travaux de terrassement",
+    thumbnail: "/assets/images/png/VID-20250325-WA0023.png",
+    videoUrl:
+      "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503166/VID-20250325-WA0023.mp4",
   },
 ];
 

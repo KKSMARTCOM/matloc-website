@@ -9,6 +9,13 @@ import SectionHeader from "./ui/SectionHeader";
 import Reveal from "./ui/Reveal";
 import { useI18n } from "@/contexts/I18nContext";
 
+const VIDEO_KEYS = [
+  "scaffoldingMadone",
+  "aggregatesSedegbe",
+  "portExtension",
+  "aggregatesSedegbeSecond",
+] as const;
+
 export default function VideoGallery() {
   const { t } = useI18n();
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
@@ -58,9 +65,7 @@ export default function VideoGallery() {
               {/* Titre */}
               <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
                 <p className="text-white font-semibold text-sm drop-shadow-md">
-                  {t(
-                    `data.videos.${["earthworks", "scaffolding", "transport", "machinery"][key]}`,
-                  )}
+                  {t(`data.videos.${VIDEO_KEYS[key]}`)}
                 </p>
               </div>
             </button>
