@@ -201,24 +201,42 @@ const resources = {
           },
         },
         videos: {
-          earthworks: "Chantier de terrassement — Cotonou",
-          scaffolding: "Location d'échafaudages — Porto-Novo",
-          transport: "Transport de matériaux BTP",
-          machinery: "Engins de terrassement en action",
+          scaffoldingMadone:
+            "Installation d'échafaudage à la pharmacie La Madone",
+          aggregatesSedegbe:
+            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
+          portExtension: "Extension du port autonome de Cotonou",
+          aggregatesSedegbeSecond:
+            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
         },
         achievements: {
           all: "Tous",
-          roads: "Infrastructures routières",
-          industrial: "Zones industrielles",
-          ports: "Ports",
-          sanitation: "Assainissement urbain",
+          aggregates: "Transport d'agrégats",
+          vessel: "Travaux sur un navire",
+          height: "Travaux en hauteur",
+          sanitation: "Travaux d'assainissement",
+          earthworks: "Travaux de terrassement",
           empty: "Aucune réalisation dans cette catégorie pour le moment.",
-          bridge: "Réhabilitation du pont de Porto-Novo",
-          zone: "Zone industrielle de Sèmè-Kpodji",
-          port: "Extension du port autonome de Cotonou",
-          network: "Réseau d'assainissement — Abomey-Calavi",
-          roadSite: "Terrassement chantier routier RNIE",
-          portoSite: "Terrassement chantier routier Porto-Novo",
+          scaffoldingMadone:
+            "Installation d'échafaudage à la pharmacie La Madone",
+          aggregatesSedegbe:
+            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
+          portExtension: "Extension du port autonome de Cotonou",
+          aggregatesSedegbeSecond:
+            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
+          aggregatesSedegbeThird:
+            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
+          aggregatesSedegbeFourth:
+            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
+          scaffoldingMadoneSite:
+            "Chantier d'installation d'échafaudage à la pharmacie La Madone",
+          nacelleSofitel:
+            "Mise à disposition d'une nacelle ciseau pour le SOFITEL Bénin",
+          nacelleSofitelSecond:
+            "Mise à disposition d'une nacelle ciseau pour le SOFITEL Bénin",
+          sanitationAkpakpa: "Assainissement à Akpakpa",
+          sanitationAkpakpaSecond: "Assainissement à Akpakpa",
+          earthworksGrandPopo: "Terrassement sur un site à Grand-Popo",
         },
       },
     },
@@ -422,24 +440,38 @@ const resources = {
           },
         },
         videos: {
-          earthworks: "Earthworks site — Cotonou",
-          scaffolding: "Scaffolding rental — Porto-Novo",
-          transport: "Construction materials transport",
-          machinery: "Earthmoving machinery in action",
+          scaffoldingMadone: "Scaffolding installation at La Madone pharmacy",
+          aggregatesSedegbe:
+            "Aggregate delivery to the Julius Berger site in Sèdègbé",
+          portExtension: "Cotonou autonomous port extension",
+          aggregatesSedegbeSecond:
+            "Aggregate delivery to the Julius Berger site in Sèdègbé",
         },
         achievements: {
           all: "All",
-          roads: "Road infrastructure",
-          industrial: "Industrial zones",
-          ports: "Ports",
-          sanitation: "Urban sanitation",
+          aggregates: "Aggregate transport",
+          vessel: "Ship work",
+          height: "Work at height",
+          sanitation: "Sanitation work",
+          earthworks: "Earthworks",
           empty: "No projects are available in this category yet.",
-          bridge: "Porto-Novo bridge rehabilitation",
-          zone: "Sèmè-Kpodji industrial zone",
-          port: "Cotonou autonomous port extension",
-          network: "Abomey-Calavi sanitation network",
-          roadSite: "RNIE road construction earthworks",
-          portoSite: "Porto-Novo road construction earthworks",
+          scaffoldingMadone: "Scaffolding installation at La Madone pharmacy",
+          aggregatesSedegbe:
+            "Aggregate delivery to the Julius Berger site in Sèdègbé",
+          portExtension: "Cotonou autonomous port extension",
+          aggregatesSedegbeSecond:
+            "Aggregate delivery to the Julius Berger site in Sèdègbé",
+          aggregatesSedegbeThird:
+            "Aggregate delivery to the Julius Berger site in Sèdègbé",
+          aggregatesSedegbeFourth:
+            "Aggregate delivery to the Julius Berger site in Sèdègbé",
+          scaffoldingMadoneSite:
+            "Scaffolding installation site at La Madone pharmacy",
+          nacelleSofitel: "Scissor lift provided for SOFITEL Benin work",
+          nacelleSofitelSecond: "Scissor lift provided for SOFITEL Benin work",
+          sanitationAkpakpa: "Sanitation work in Akpakpa",
+          sanitationAkpakpaSecond: "Sanitation work in Akpakpa",
+          earthworksGrandPopo: "Earthworks at a site in Grand-Popo",
         },
       },
     },

@@ -11,14 +11,27 @@ import {
 import Reveal from "./ui/Reveal";
 import { useI18n } from "@/contexts/I18nContext";
 
-const CATEGORY_KEYS = ["all", "roads", "industrial", "ports", "sanitation"];
+const CATEGORY_KEYS = [
+  "all",
+  "aggregates",
+  "vessel",
+  "height",
+  "sanitation",
+  "earthworks",
+];
 const ACHIEVEMENT_KEYS = [
-  "bridge",
-  "zone",
-  "port",
-  "network",
-  "roadSite",
-  "portoSite",
+  "scaffoldingMadone",
+  "aggregatesSedegbe",
+  "portExtension",
+  "aggregatesSedegbeSecond",
+  "aggregatesSedegbeThird",
+  "aggregatesSedegbeFourth",
+  "scaffoldingMadoneSite",
+  "nacelleSofitel",
+  "nacelleSofitelSecond",
+  "sanitationAkpakpa",
+  "sanitationAkpakpaSecond",
+  "earthworksGrandPopo",
 ];
 
 function getGridClass(index: number, total: number) {
