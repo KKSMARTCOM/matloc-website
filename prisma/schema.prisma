@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CmsSetting {
+  key       String   @id
+  value     String
+  label     String
+  group     String   @map("grp")
+  sortOrder Int      @default(0) @map("sort_order")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("cms_settings")
+}
+
+model CmsService {
+  id          String   @id @default(dbgenerated("gen_random_uuid()::text"))
+  title       String
+  subtitle    String   @default("")
+  description String   @default("")
+  points      Json     @default("[]")
+  imageUrl    String   @default("") @map("image_url")
+  href        String   @default("")
+  sortOrder   Int      @default(0) @map("sort_order")
+  isPublished Boolean  @default(true) @map("is_published")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("cms_services")
+}
+
+model CmsAchievement {
+  id          String   @id @default(dbgenerated("gen_random_uuid()::text"))
+  title       String
+  category    String   @default("")
+  thumbnail   String   @default("")
+  videoUrl    String   @default("") @map("video_url")
+  sortOrder   Int      @default(0) @map("sort_order")
+  isPublished Boolean  @default(true) @map("is_published")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("cms_achievements")
+}
+
+model CmsPartner {
+  id          String   @id @default(dbgenerated("gen_random_uuid()::text"))
+  name        String
+  logoUrl     String   @default("") @map("logo_url")
+  websiteUrl  String   @default("") @map("website_url")
+  sortOrder   Int      @default(0) @map("sort_order")
+  isPublished Boolean  @default(true) @map("is_published")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("cms_partners")
+}
+
+model CmsMember {
+  id        String   @id @default(dbgenerated("gen_random_uuid()::text"))
+  name      String
+  role      String   @default("")
+  imageUrl  String   @default("") @map("image_url")
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("cms_members")
+}
+
+model CmsValue {
+  id        String   @id @default(dbgenerated("gen_random_uuid()::text"))
+  title     String
+  subtitle  String   @default("")
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("cms_values")
+}
+
+model AdminUser {
+  id           String   @id @default(dbgenerated("gen_random_uuid()::text"))
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  role         String   @default("collaborator")
+  isOwner      Boolean  @default(false) @map("is_owner")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("admin_users")
+}

@@ -3,6 +3,10 @@ import AdminShell from "@/components/admin/AdminShell";
 
 export const metadata: Metadata = { title: "Admin — MATLOC CMS" };
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return <AdminShell>{children}</AdminShell>;
 }
