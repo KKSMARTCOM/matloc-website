@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { PlayIcon, XIcon } from "lucide-react";
-import { ACHIEVEMENTS, ACHIEVEMENT_CATEGORIES } from "@/public/assets/assets";
 import Reveal from "./ui/Reveal";
 import { useI18n } from "@/contexts/I18nContext";
 import type { DbAchievement } from "@/lib/db";
@@ -20,17 +19,7 @@ function getGridClass(index: number, total: number) {
 
 export default function AchievementGallery() {
   const { t } = useI18n();
-  const [achievements, setAchievements] = useState<DbAchievement[]>(
-    ACHIEVEMENTS.map((a) => ({
-      id: String(a.id),
-      title: a.title,
-      category: a.category,
-      thumbnail: a.thumbnail,
-      video_url: a.videoUrl,
-      sort_order: Number(a.id) - 1,
-      is_published: true,
-    })),
-  );
+  const [achievements, setAchievements] = useState<DbAchievement[]>([]);
   const [activeCategory, setActiveCategory] = useState("Tous");
   const [activeVideo, setActiveVideo] = useState<DbAchievement | null>(null);
 

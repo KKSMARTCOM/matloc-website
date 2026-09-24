@@ -5,14 +5,11 @@ import CtaBanner from "@/components/ui/CtaBanner";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Reveal from "@/components/ui/Reveal";
-import { VALUES } from "@/public/assets/assets";
 import Image from "next/image";
 import { useI18n } from "@/contexts/I18nContext";
 import { useCmsSettings } from "@/hooks/useCmsSettings";
 import { useEffect, useState } from "react";
 import type { DbValue } from "@/lib/db";
-
-const VALUE_KEYS = ["reliability", "innovation", "safety", "professionalism"];
 
 const AboutPageClient = () => {
   const { t } = useI18n();
@@ -20,14 +17,8 @@ const AboutPageClient = () => {
   const images = useCmsSettings("images");
 
   /* Valeurs depuis la DB avec fallback statique */
-  const [values, setValues] = useState<DbValue[]>(
-    VALUES.map((v, i) => ({
-      id: `value-${i}`,
-      title: t(`data.values.${VALUE_KEYS[i]}.title`),
-      subtitle: t(`data.values.${VALUE_KEYS[i]}.subtitle`),
-      sort_order: i,
-    })),
-  );
+  const [values, setValues] = useState<DbValue[]>([]);
+
   useEffect(() => {
     fetch("/api/admin/values")
       .then((r) => (r.ok ? r.json() : null))
@@ -113,13 +104,13 @@ const AboutPageClient = () => {
           >
             {values.map((v, key) => (
               <div key={v.id} className="bg-white p-5 space-y-4">
-                <div className="w-10 h-10 flex justify-center items-center bg-primary text-white font-extrabold">
+                {/* <div className="w-10 h-10 flex justify-center items-center bg-primary text-white font-extrabold">
                   {VALUES[key]?.icon &&
                     (() => {
                       const Icon = VALUES[key].icon;
                       return <Icon size={24} />;
                     })()}
-                </div>
+                </div> */}
                 <h2 className="font-[600]">{v.title}</h2>
                 <p>{v.subtitle}</p>
               </div>

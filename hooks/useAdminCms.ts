@@ -5,9 +5,9 @@ import type { SaveStatus } from "@/components/admin/SaveBar";
 import type { Field } from "@/components/admin/FieldList";
 
 export function useAdminCms(group: string) {
-  const [fields, setFields]   = useState<Field[]>([]);
+  const [fields, setFields] = useState<Field[]>([]);
   const [loading, setLoading] = useState(true);
-  const [status, setStatus]   = useState<SaveStatus>("idle");
+  const [status, setStatus] = useState<SaveStatus>("idle");
 
   useEffect(() => {
     fetch(`/api/cms/${group}`)
@@ -17,18 +17,22 @@ export function useAdminCms(group: string) {
       .finally(() => setLoading(false));
   }, [group]);
 
-  const handleChange = useCallback((key: string, value: string) =>
-    setFields((prev) => prev.map((f) => (f.key === key ? { ...f, value } : f))),
-  []);
+  const handleChange = useCallback(
+    (key: string, value: string) =>
+      setFields((prev) =>
+        prev.map((f) => (f.key === key ? { ...f, value } : f)),
+      ),
+    [],
+  );
 
   const handleSave = useCallback(async () => {
     setStatus("saving");
     const body = Object.fromEntries(fields.map((f) => [f.key, f.value]));
     try {
       const res = await fetch(`/api/cms/${group}`, {
-        method:  "PATCH",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify(body),
+        body: JSON.stringify(body),
       });
       setStatus(res.ok ? "saved" : "error");
       if (res.ok) setTimeout(() => setStatus("idle"), 2500);

@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { PlayIcon, XIcon, ArrowRightIcon } from "lucide-react";
-import { VIDEOS } from "@/public/assets/assets";
 import Link from "next/link";
 import SectionHeader from "./ui/SectionHeader";
 import Reveal from "./ui/Reveal";
 import { useI18n } from "@/contexts/I18nContext";
+import { DbAchievement } from "@/lib/db";
 
 const VIDEO_KEYS = [
   "scaffoldingMadone",
@@ -18,7 +18,18 @@ const VIDEO_KEYS = [
 
 export default function VideoGallery() {
   const { t } = useI18n();
+  const [videos, setVideos] = useState<DbAchievement[]>([]);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/admin/achievements")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d: { items?: DbAchievement[] } | null) => {
+        const pub = (d?.items ?? []).filter((a) => a.is_published);
+        if (pub.length) setVideos(pub.slice(0, 4));
+      })
+      .catch(() => undefined);
+  }, []);
 
   return (
     <>
@@ -34,10 +45,10 @@ export default function VideoGallery() {
           distance={80}
           className="grid grid-cols-1 sm:grid-cols-2 gap-6"
         >
-          {VIDEOS.map((video, key) => (
+          {videos.map((video, key) => (
             <button
               key={key}
-              onClick={() => setActiveVideo(video.videoUrl)}
+              onClick={() => setActiveVideo(video.video_url)}
               className="group relative w-full h-64 rounded-xl overflow-hidden shadow-md border-0 cursor-pointer p-0"
             >
               <Image
@@ -65,7 +76,7 @@ export default function VideoGallery() {
               {/* Titre */}
               <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
                 <p className="text-white font-semibold text-sm drop-shadow-md">
-                  {t(`data.videos.${VIDEO_KEYS[key]}`)}
+                  {video.title}
                 </p>
               </div>
             </button>
