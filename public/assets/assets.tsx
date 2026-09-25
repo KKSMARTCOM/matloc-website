@@ -224,21 +224,23 @@ export const VIDEOS: Video[] = [
   },
   {
     title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
-    thumbnail: "/assets/images/png/achievement2.png",
+    thumbnail: "/assets/images/png/achievement5.png",
     videoUrl:
-      "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567926/20251119_152338.mp4",
+      "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567908/20251119_152307.mp4",
   },
   {
-    title: "Extension du port autonome de Cotonou",
-    thumbnail: "/assets/images/png/achievement3.png",
+    title:
+      "Mise à disposition d’une nacelle ciseau pour des travaux au SOFITEL BENIN",
+    thumbnail: "/assets/images/png/20250901_094502.png",
     videoUrl:
-      "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567921/20260113_104734.mp4",
+      "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503394/20250901_094502.mp4",
   },
   {
-    title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
-    thumbnail: "/assets/images/png/achievement4.png",
+    title:
+      "Chantier d’installation d’échafaudage au niveau de la pharmacie la Madone.",
+    thumbnail: "/assets/images/png/20250509_140731.png",
     videoUrl:
-      "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567920/20251119_152422.mp4",
+      "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503898/20250509_140731.mp4",
   },
 ];
 
@@ -268,30 +270,30 @@ export const ACHIEVEMENTS: Achievement[] = [
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787568537/20250509_140541.mp4",
   },
-  {
+  /* {
     id: 2,
     title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
     category: "Transport d’agrégats",
     thumbnail: "/assets/images/png/achievement2.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567926/20251119_152338.mp4",
-  },
-  {
+  }, */
+  /* {
     id: 3,
-    title: "Extension du port autonome de Cotonou",
+    title: "Extension au port autonome de Cotonou",
     category: "Travaux sur un navire",
     thumbnail: "/assets/images/png/achievement3.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567921/20260113_104734.mp4",
-  },
-  {
+  }, */
+  /* {
     id: 4,
     title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
     category: "Transport d’agrégats",
     thumbnail: "/assets/images/png/achievement4.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1787567920/20251119_152422.mp4",
-  },
+  }, */
   {
     id: 5,
     title: "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
@@ -326,7 +328,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503394/20250901_094502.mp4",
   },
-  {
+  /* {
     id: 9,
     title:
       "Mise à disposition d’une nacelle ciseau pour des travaux au SOFITEL BENIN",
@@ -334,23 +336,23 @@ export const ACHIEVEMENTS: Achievement[] = [
     thumbnail: "/assets/images/png/20250901_100258.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503387/20250901_100258.mp4",
-  },
-  {
+  }, */
+  /* {
     id: 10,
     title: "Assainissement à Akpakpa",
     category: "Travaux d’assainissement",
     thumbnail: "/assets/images/png/20260420_095058.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503301/20260420_095058.mp4",
-  },
-  {
+  }, */
+  /* {
     id: 11,
     title: "Assainissement à Akpakpa",
     category: "Travaux d’assainissement",
     thumbnail: "/assets/images/png/20260420_095109.png",
     videoUrl:
       "https://res.cloudinary.com/dabnbstdz/video/upload/v1789503995/20260420_095109.mp4",
-  },
+  }, */
   {
     id: 12,
     title: "Terrassement sur un site au niveau de Grand-Popo",
