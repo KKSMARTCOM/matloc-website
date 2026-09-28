@@ -33,6 +33,15 @@ const ACHIEVEMENT_KEYS = [
   "sanitationAkpakpaSecond",
   "earthworksGrandPopo",
 ];
+const ACTIVE_CATEGORY_KEYS = CATEGORY_KEYS.filter(
+  (key) =>
+    key === "all" ||
+    ACHIEVEMENTS.some(
+      (achievement) =>
+        CATEGORY_KEYS[ACHIEVEMENT_CATEGORIES.indexOf(achievement.category)] ===
+        key,
+    ),
+);
 
 function getGridClass(index: number, total: number) {
   const isLastAlone = total % 2 !== 0 && index === total - 1;
@@ -74,7 +83,7 @@ export default function AchievementGallery() {
         distance={80}
         className="flex gap-2 overflow-x-auto pb-3 mb-10 -mx-1 px-1 custom-scrollbar"
       >
-        {CATEGORY_KEYS.map((key) => (
+        {ACTIVE_CATEGORY_KEYS.map((key) => (
           <button
             key={key}
             onClick={() => setActiveCategory(key)}
