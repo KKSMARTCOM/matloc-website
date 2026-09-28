@@ -202,12 +202,13 @@ const resources = {
         },
         videos: {
           scaffoldingMadone:
-            "Installation d'échafaudage à la pharmacie La Madone",
+            "Installation d’échafaudage au niveau de la pharmacie la Madone",
           aggregatesSedegbe:
-            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
-          portExtension: "Extension du port autonome de Cotonou",
-          aggregatesSedegbeSecond:
-            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
+            "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
+          nacelleSofitel:
+            "Mise à disposition d’une nacelle ciseau pour des travaux au SOFITEL BENIN",
+          scaffoldingMadoneSite:
+            "Chantier d’installation d’échafaudage au niveau de la pharmacie la Madone.",
         },
         achievements: {
           all: "Tous",
@@ -218,20 +219,20 @@ const resources = {
           earthworks: "Travaux de terrassement",
           empty: "Aucune réalisation dans cette catégorie pour le moment.",
           scaffoldingMadone:
-            "Installation d'échafaudage à la pharmacie La Madone",
+            "Installation d’échafaudage au niveau de la pharmacie la Madone",
           aggregatesSedegbe:
-            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
+            "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
           portExtension: "Extension du port autonome de Cotonou",
           aggregatesSedegbeSecond:
-            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
+            "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
           aggregatesSedegbeThird:
-            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
+            "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
           aggregatesSedegbeFourth:
-            "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
+            "Livraison d’agrégats sur le site de JULIUS BERGER à SEDEGBE",
           scaffoldingMadoneSite:
-            "Chantier d'installation d'échafaudage à la pharmacie La Madone",
+            "Chantier d’installation d’échafaudage au niveau de la pharmacie la Madone.",
           nacelleSofitel:
-            "Mise à disposition d'une nacelle ciseau pour le SOFITEL Bénin",
+            "Mise à disposition d’une nacelle ciseau pour des travaux au SOFITEL BENIN",
           nacelleSofitelSecond:
             "Mise à disposition d'une nacelle ciseau pour le SOFITEL Bénin",
           sanitationAkpakpa: "Assainissement à Akpakpa",
@@ -442,10 +443,10 @@ const resources = {
         videos: {
           scaffoldingMadone: "Scaffolding installation at La Madone pharmacy",
           aggregatesSedegbe:
-            "Aggregate delivery to the Julius Berger site in Sèdègbé",
-          portExtension: "Cotonou autonomous port extension",
-          aggregatesSedegbeSecond:
-            "Aggregate delivery to the Julius Berger site in Sèdègbé",
+            "Aggregate delivery to the JULIUS BERGER site in SEDEGBE",
+          nacelleSofitel: "Scissor lift provided for work at SOFITEL BENIN",
+          scaffoldingMadoneSite:
+            "Scaffolding installation at La Madone pharmacy",
         },
         achievements: {
           all: "All",
@@ -457,17 +458,17 @@ const resources = {
           empty: "No projects are available in this category yet.",
           scaffoldingMadone: "Scaffolding installation at La Madone pharmacy",
           aggregatesSedegbe:
-            "Aggregate delivery to the Julius Berger site in Sèdègbé",
+            "Aggregate delivery to the JULIUS BERGER site in SEDEGBE",
           portExtension: "Cotonou autonomous port extension",
           aggregatesSedegbeSecond:
-            "Aggregate delivery to the Julius Berger site in Sèdègbé",
+            "Aggregate delivery to the JULIUS BERGER site in SEDEGBE",
           aggregatesSedegbeThird:
-            "Aggregate delivery to the Julius Berger site in Sèdègbé",
+            "Aggregate delivery to the JULIUS BERGER site in SEDEGBE",
           aggregatesSedegbeFourth:
-            "Aggregate delivery to the Julius Berger site in Sèdègbé",
+            "Aggregate delivery to the JULIUS BERGER site in SEDEGBE",
           scaffoldingMadoneSite:
-            "Scaffolding installation site at La Madone pharmacy",
-          nacelleSofitel: "Scissor lift provided for SOFITEL Benin work",
+            "Scaffolding installation at La Madone pharmacy",
+          nacelleSofitel: "Scissor lift provided for work at SOFITEL BENIN",
           nacelleSofitelSecond: "Scissor lift provided for SOFITEL Benin work",
           sanitationAkpakpa: "Sanitation work in Akpakpa",
           sanitationAkpakpaSecond: "Sanitation work in Akpakpa",

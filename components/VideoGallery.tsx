@@ -12,8 +12,8 @@ import { useI18n } from "@/contexts/I18nContext";
 const VIDEO_KEYS = [
   "scaffoldingMadone",
   "aggregatesSedegbe",
-  "portExtension",
-  "aggregatesSedegbeSecond",
+  "nacelleSofitel",
+  "scaffoldingMadoneSite",
 ] as const;
 
 export default function VideoGallery() {
