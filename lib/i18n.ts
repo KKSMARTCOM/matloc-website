@@ -202,7 +202,7 @@ const resources = {
         },
         videos: {
           scaffoldingMadone:
-            "Installation d'échafaudage à la pharmacie La Madone",
+            "Installation d'échafaudages à la pharmacie La Madone",
           aggregatesSedegbe:
             "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
           portExtension: "Extension du port autonome de Cotonou",
@@ -218,7 +218,7 @@ const resources = {
           earthworks: "Travaux de terrassement",
           empty: "Aucune réalisation dans cette catégorie pour le moment.",
           scaffoldingMadone:
-            "Installation d'échafaudage à la pharmacie La Madone",
+            "Installation d'échafaudages à la pharmacie La Madone",
           aggregatesSedegbe:
             "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
           portExtension: "Extension du port autonome de Cotonou",
@@ -229,7 +229,7 @@ const resources = {
           aggregatesSedegbeFourth:
             "Livraison d'agrégats sur le site de Julius Berger à Sèdègbé",
           scaffoldingMadoneSite:
-            "Chantier d'installation d'échafaudage à la pharmacie La Madone",
+            "Chantier d'installation d'échafaudages à la pharmacie La Madone",
           nacelleSofitel:
             "Mise à disposition d'une nacelle ciseau pour le SOFITEL Bénin",
           nacelleSofitelSecond:
