@@ -208,7 +208,7 @@ const resources = {
           nacelleSofitel:
             "Mise à disposition d’une nacelle ciseau pour des travaux au SOFITEL BENIN",
           scaffoldingMadoneSite:
-            "Chantier d’installation d’échafaudage au niveau de la pharmacie la Madone.",
+            "Chantier d’installation d’échafaudages au niveau de la pharmacie la Madone.",
         },
         achievements: {
           all: "Tous",
