@@ -76,6 +76,15 @@ export default function Footer() {
     "nav.contact",
   ];
 
+  /* Labels services footer traduits */
+  const footerServiceKeys = [
+    "footer.service1",
+    "footer.service2",
+    "footer.service3",
+    "footer.service4",
+    "footer.service5",
+  ];
+
   /* Liens sociaux avec URLs issues de la DB (fallback sur constants) */
   const socialLinks = SOCIAL_LINKS.map((s) => ({
     ...s,
@@ -85,8 +94,8 @@ export default function Footer() {
   /* Coordonnées issues de la DB */
   const contactInfo = [
     { ...CONTACT_INFO[0], label: get("footer_address", CONTACT_INFO[0].label) },
-    { ...CONTACT_INFO[1], label: get("footer_phone",   CONTACT_INFO[1].label), href: `tel:${get("footer_phone", "+22901283102").replace(/\s/g, "")}` },
-    { ...CONTACT_INFO[2], label: get("footer_email",   CONTACT_INFO[2].label), href: `mailto:${get("footer_email", "info.matloc@gmail.com")}` },
+    { ...CONTACT_INFO[1], label: get("footer_phone", CONTACT_INFO[1].label), href: `tel:${get("footer_phone", "+22901283102").replace(/\s/g, "")}` },
+    { ...CONTACT_INFO[2], label: get("footer_email", CONTACT_INFO[2].label), href: `mailto:${get("footer_email", "info.matloc@gmail.com")}` },
   ];
   return (
     <footer
@@ -107,7 +116,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-md text-white/70 leading-relaxed max-w-55">
-              {get("footer_description", t("footer.description"))}
+              {get("footer_description", "footer.description", t("footer.description"))}
             </p>
             <div
               className="flex items-center gap-2 flex-wrap"
@@ -141,8 +150,7 @@ export default function Footer() {
           <div>
             <h3 className="text-md font-semibold uppercase tracking-widest text-white mb-5">
               {t("footer.quickLinks")}
-            </h3>
-            <ul className="flex flex-col gap-3" role="list">
+            </h3>            <ul className="flex flex-col gap-3" role="list">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -162,13 +170,15 @@ export default function Footer() {
               {t("footer.services")}
             </h3>
             <ul className="flex flex-col gap-3" role="list">
-              {FOOTER_SERVICES.map((s) => (
+              {FOOTER_SERVICES.map((s, i) => (
                 <li key={s.href}>
                   <Link
                     href={s.href}
                     className="text-sm text-white/70 hover:text-[var(--color-primary)] transition-colors duration-150"
                   >
-                    {s.label}
+                    {t(footerServiceKeys[i]) !== footerServiceKeys[i]
+                      ? t(footerServiceKeys[i])
+                      : s.label}
                   </Link>
                 </li>
               ))}
@@ -179,11 +189,10 @@ export default function Footer() {
           <div>
             <h3 className="text-md font-semibold uppercase tracking-widest text-white mb-5">
               {t("footer.contact")}
-            </h3>
-            <ul className="flex flex-col gap-4" role="list">
+            </h3>            <ul className="flex flex-col gap-4" role="list">
               {contactInfo.map((item) => (
                 <li
-                  key={item.label}
+                  key={item.type}
                   className="flex items-start gap-2.5 text-sm text-white/70"
                 >
                   <span className="text-[var(--color-primary)]">
@@ -209,7 +218,7 @@ export default function Footer() {
       <div className="bg-[var(--color-bg-footer-bottom)] border-t border-white/10">
         <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-white/50">
-            © {new Date().getFullYear()} {get("footer_copyright", "MATLOC BTP. Tous droits réservés.")}
+            © {new Date().getFullYear()} {get("footer_copyright", "footer.copyright", t("footer.copyright"))}
           </p>
           <p className="text-xs text-white/40">
             {t("common.madeBy")}{" "}

@@ -14,10 +14,10 @@ export default function CtaBanner({ title, subtitle }: Props) {
   const { t } = useI18n();
   const cms = useCmsSettings("cta");
 
-  const finalTitle = title ?? cms.get("cta_title", t("cta.title"));
-  const finalSubtitle = subtitle ?? cms.get("cta_subtitle", t("cta.subtitle"));
-  const btnPrimary = cms.get("cta_btn_primary", t("actions.quote"));
-  const btnSecondary = cms.get("cta_btn_secondary", t("actions.contact"));
+  const finalTitle    = title    ?? cms.get("cta_title",    "cta.title",    t("cta.title"));
+  const finalSubtitle = subtitle ?? cms.get("cta_subtitle", "cta.subtitle", t("cta.subtitle"));
+  const btnPrimary    = cms.get("cta_btn_primary",   "actions.quote",   t("actions.quote"));
+  const btnSecondary  = cms.get("cta_btn_secondary", "actions.contact", t("actions.contact"));
 
   return (
     <div className="py-20 bg-gray-50">

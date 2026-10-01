@@ -16,8 +16,9 @@ const PAGE_TITLES: Record<string, string> = {
   "/admin/cta": "Bannière CTA",
   "/admin/contact": "Contact",
   "/admin/footer": "Footer",
-  "/admin/images": "Images",
-  "/admin/seo": "SEO",
+  "/admin/images":  "Images",
+  "/admin/langue":  "Langues",
+  "/admin/seo":     "SEO",
   "/admin/users": "Utilisateurs",
 };
 
@@ -71,6 +72,11 @@ const SEARCH_ITEMS = [
     href: "/admin/images",
     label: "Images",
     desc: "Images hero, bannières, logos",
+  },
+  {
+    href: "/admin/langue",
+    label: "Langues",
+    desc: "Traductions FR/EN de l'interface",
   },
   {
     href: "/admin/seo",

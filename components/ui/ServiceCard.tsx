@@ -6,12 +6,13 @@ import { type ReactNode, useState } from "react";
 
 interface Props {
   icon: ReactNode;
-  iconLarge: ReactNode;
+  iconLarge?: ReactNode;
   title: string;
   subtitle: string;
   url?: string;
   description: string;
   points?: string[];
+  learnMoreLabel?: string;
 }
 
 export default function ServiceCard({
@@ -22,6 +23,7 @@ export default function ServiceCard({
   url,
   description,
   points,
+  learnMoreLabel = "En savoir plus",
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -59,7 +61,7 @@ export default function ServiceCard({
             onClick={() => setIsOpen(true)}
             className="mt-2 inline-flex items-center justify-center px-5 py-2 border border-[var(--color-text-primary)] text-xs font-bold tracking-widest rounded-sm hover:bg-[var(--color-text-primary)] hover:text-white transition-colors duration-150 uppercase"
           >
-            En savoir plus
+            {learnMoreLabel}
           </button>
         </div>
       </div>

@@ -18,6 +18,7 @@ import {
   GalleryHorizontal,
   UserCog,
   ChevronRight,
+  Languages,
   X,
 } from "lucide-react";
 import SidebarFooter from "@/components/admin/SidebarFooter";
@@ -47,8 +48,9 @@ const NAV_BASE = [
   {
     label: "MÉDIAS",
     items: [
-      { href: "/admin/images", label: "Images", icon: GalleryHorizontal },
-      { href: "/admin/seo", label: "SEO", icon: Globe },
+      { href: "/admin/images",  label: "Images",   icon: GalleryHorizontal },
+      { href: "/admin/langue",  label: "Langues",  icon: Languages },
+      { href: "/admin/seo",     label: "SEO",      icon: Globe },
     ],
   },
 ];

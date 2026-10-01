@@ -583,6 +583,7 @@ export type DbService = {
   description: string;
   points: string[];
   image_url: string;
+  icon: string;
   href: string;
   sort_order: number;
   is_published: boolean;
@@ -908,6 +909,7 @@ export async function getServices(): Promise<DbService[]> {
     description: r.description,
     points: r.points as string[],
     image_url: r.imageUrl,
+    icon: r.icon,
     href: r.href,
     sort_order: r.sortOrder,
     is_published: r.isPublished,
@@ -928,6 +930,7 @@ export async function upsertService(
       description: data.description ?? "",
       points: data.points ?? [],
       imageUrl: data.image_url ?? "",
+      icon: data.icon ?? "wrench",
       href: data.href ?? "",
       sortOrder: data.sort_order ?? 0,
       isPublished: data.is_published ?? true,
@@ -938,6 +941,7 @@ export async function upsertService(
       description: data.description ?? "",
       points: data.points ?? [],
       imageUrl: data.image_url ?? "",
+      icon: data.icon ?? "wrench",
       href: data.href ?? "",
       sortOrder: data.sort_order ?? 0,
       isPublished: data.is_published ?? true,
@@ -1234,4 +1238,116 @@ export async function deleteUser(id: string): Promise<void> {
   await initUsersTable();
   /* Interdire la suppression du owner */
   await prisma.adminUser.deleteMany({ where: { id, isOwner: false } });
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TABLE cms_translations — traductions dynamiques FR/EN
+   ══════════════════════════════════════════════════════════════ */
+
+export type DbTranslation = { key: string; lang: string; value: string };
+
+/* Traductions initiales aplaties depuis lib/i18n.ts */
+const TRANSLATION_SEED: { key: string; fr: string; en: string }[] = [
+  { key: "nav.home",        fr: "Accueil",          en: "Home" },
+  { key: "nav.about",       fr: "À propos",         en: "About" },
+  { key: "nav.services",    fr: "Services",         en: "Services" },
+  { key: "nav.projects",    fr: "Réalisations",     en: "Projects" },
+  { key: "nav.contact",     fr: "Contact",          en: "Contact" },
+  { key: "actions.quote",       fr: "Demander un devis",  en: "Request a quote" },
+  { key: "actions.contact",     fr: "Nous contacter",     en: "Contact us" },
+  { key: "actions.learnMore",   fr: "En savoir plus",     en: "Learn more" },
+  { key: "actions.send",        fr: "Envoyer le message", en: "Send message" },
+  { key: "actions.sendRequest", fr: "Envoyer la demande", en: "Send request" },
+  { key: "cta.eyebrow",   fr: "PRÊT À DÉMARRER ?",                                                 en: "READY TO GET STARTED?" },
+  { key: "cta.title",     fr: "Optimisez la performance de votre chantier avec MATLOC",             en: "Optimize your site performance with MATLOC" },
+  { key: "cta.subtitle",  fr: "Contactez nos experts pour une analyse personnalisée de vos besoins.",en: "Contact our experts for a personalized assessment of your needs." },
+  { key: "footer.description", fr: "Expert en location d'échafaudages, transport et équipements BTP.", en: "Expert in scaffolding rental, transport and construction equipment." },
+  { key: "footer.quickLinks",  fr: "Liens rapides",  en: "Quick links" },
+  { key: "footer.services",    fr: "Nos services",   en: "Our services" },
+  { key: "footer.contact",     fr: "Contact",        en: "Contact" },
+  { key: "footer.copyright",   fr: "MATLOC BTP. Tous droits réservés.", en: "MATLOC BTP. All rights reserved." },
+  { key: "footer.service1", fr: "Location d'échafaudages",                    en: "Scaffolding rental" },
+  { key: "footer.service2", fr: "Les solutions d'élévation",                  en: "Lifting solutions" },
+  { key: "footer.service3", fr: "Transport",                                  en: "Transport" },
+  { key: "footer.service4", fr: "Location d'engins et d'équipements BTP",     en: "Construction machinery rental" },
+  { key: "footer.service5", fr: "Services associés aux travaux et chantiers", en: "Site-related services" },
+  { key: "home.heroTitle",    fr: "Votre partenaire en solutions d'élévation, de transport et d'équipements BTP.", en: "Your partner for lifting, transport and construction equipment solutions." },
+  { key: "home.heroSubtitle", fr: "Tout pour vos travaux de construction au Bénin. Des solutions flexibles adaptées à l'envergure de vos chantiers.", en: "Everything you need for your construction projects in Benin. Flexible solutions adapted to the scale of your sites." },
+  { key: "home.expertise",   fr: "Expertise BTP",            en: "Construction expertise" },
+  { key: "home.maintenance", fr: "Maintenance régulière",    en: "Regular maintenance" },
+  { key: "home.certified",   fr: "Équipements certifiés et fiables", en: "Certified and reliable equipment" },
+  { key: "home.flexibility", fr: "Flexibilité totale",       en: "Total flexibility" },
+  { key: "home.duration",    fr: "Location courte ou longue durée", en: "Short or long-term rental" },
+  { key: "home.services",    fr: "Nos services",             en: "Our services" },
+  { key: "home.partners",    fr: "Nos partenaires",          en: "Our partners" },
+  { key: "home.quote",       fr: "Devis",                    en: "Quote" },
+  { key: "home.servicesIntro", fr: "Location d'engins de chantier et prestations BTP clé en main.", en: "Construction machinery rental and turnkey BTP services." },
+  { key: "home.partnersIntro", fr: "Entreprises, promoteurs et maîtres d'ouvrage qui nous font confiance.", en: "Companies, developers and project owners who trust us." },
+  { key: "home.quoteIntro",  fr: "Demandez une estimation gratuite pour votre projet.", en: "Request a free estimate for your project." },
+  { key: "home.quoteText",   fr: "Notre équipe se tient à votre disposition pour vous offrir un devis sur-mesure.", en: "Our team is available to provide a tailored quote that meets your specific needs." },
+  { key: "pages.about",        fr: "À propos",                  en: "About" },
+  { key: "pages.aboutTitle",   fr: "Qui sommes-nous ?",         en: "Who are we?" },
+  { key: "pages.values",       fr: "Nos valeurs fondamentales", en: "Our core values" },
+  { key: "pages.team",         fr: "Notre équipe",              en: "Our team" },
+  { key: "pages.services",     fr: "Nos services",              en: "Our services" },
+  { key: "pages.serviceTitle", fr: "Un parc matériel de pointe",en: "A cutting-edge equipment fleet" },
+  { key: "pages.projects",     fr: "Nos réalisations",          en: "Our projects" },
+  { key: "pages.projectTitle", fr: "Projets emblématiques",     en: "Landmark projects" },
+  { key: "pages.contact",      fr: "Contactez-nous",            en: "Contact us" },
+  { key: "pages.coordinates",  fr: "Nos coordonnées",           en: "Our contact details" },
+  { key: "pages.hours",        fr: "Heure d'ouverture",         en: "Opening hours" },
+  { key: "pages.weekdays",     fr: "Lundi - Vendredi",          en: "Monday - Friday" },
+  { key: "pages.hoursValue",   fr: "08h00 - 18h30",             en: "8:00 AM - 6:30 PM" },
+  { key: "about.intro",       fr: "Depuis sa création, MATLOC s'est imposé comme l'acteur de référence au Bénin.", en: "Since its creation, MATLOC has become a leading reference in Benin's construction sector." },
+  { key: "about.mission",     fr: "Notre mission est claire : accompagner les entreprises de construction.", en: "Our mission is clear: to support construction companies." },
+  { key: "about.experience",  fr: "Années d'expérience", en: "Years of experience" },
+  { key: "about.equipment",   fr: "Engins disponibles",  en: "Available machines" },
+  { key: "about.valuesIntro", fr: "L'excellence opérationnelle n'est pas un acte, c'est une habitude.", en: "Operational excellence is not an act, it is a habit." },
+  { key: "forms.messageTitle", fr: "Envoyez un message",       en: "Send us a message" },
+  { key: "forms.fullName",     fr: "Nom complet",              en: "Full name" },
+  { key: "forms.email",        fr: "Email",                    en: "Email" },
+  { key: "forms.phone",        fr: "Téléphone",                en: "Phone" },
+  { key: "forms.message",      fr: "Votre message",            en: "Your message" },
+  { key: "forms.success",      fr: "Votre demande a bien été envoyée.", en: "Your request has been sent successfully." },
+  { key: "forms.error",        fr: "Une erreur est survenue. Veuillez réessayer.", en: "An error occurred. Please try again." },
+];
+
+let translationsInit = false;
+
+export async function initTranslations() {
+  if (translationsInit) return;
+  translationsInit = true;
+
+  const count = await prisma.cmsTranslation.count();
+  if (count > 0) return;
+
+  for (const row of TRANSLATION_SEED) {
+    await prisma.cmsTranslation.createMany({
+      data: [
+        { key: row.key, lang: "fr", value: row.fr },
+        { key: row.key, lang: "en", value: row.en },
+      ],
+      skipDuplicates: true,
+    });
+  }
+}
+
+export async function getTranslationsByLang(lang: string): Promise<DbTranslation[]> {
+  await initTranslations();
+  return prisma.cmsTranslation.findMany({
+    where: { lang },
+    orderBy: { key: "asc" },
+    select: { key: true, lang: true, value: true },
+  });
+}
+
+export async function upsertTranslations(updates: { key: string; lang: string; value: string }[]): Promise<void> {
+  await initTranslations();
+  for (const u of updates) {
+    await prisma.cmsTranslation.upsert({
+      where: { key_lang: { key: u.key, lang: u.lang } },
+      create: { key: u.key, lang: u.lang, value: u.value },
+      update: { value: u.value },
+    });
+  }
 }

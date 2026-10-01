@@ -305,6 +305,12 @@ const resources = {
         quickLinks: "Quick links",
         services: "Our services",
         contact: "Contact",
+        copyright: "MATLOC BTP. All rights reserved.",
+        service1: "Scaffolding rental",
+        service2: "Lifting solutions",
+        service3: "Transport",
+        service4: "Construction machinery and equipment rental",
+        service5: "Services related to works and sites",
       },
       home: {
         heroTitle:
@@ -481,10 +487,15 @@ const resources = {
 if (!i18n.isInitialized) {
   i18n.use(LanguageDetector).init({
     resources,
+    /* FR par défaut — ne jamais détecter automatiquement depuis le navigateur */
+    lng: "fr",
     fallbackLng: "fr",
     detection: {
-      order: ["localStorage", "navigator"],
+      /* Lire uniquement le localStorage (choix explicite de l'utilisateur) */
+      order: ["localStorage"],
       caches: ["localStorage"],
+      /* Si aucune préférence en localStorage, rester en FR */
+      lookupLocalStorage: "matloc_lang",
     },
     interpolation: { escapeValue: false },
   });

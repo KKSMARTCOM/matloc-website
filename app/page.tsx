@@ -38,21 +38,21 @@ export default function Home() {
         <div className="absolute top-0 right-0 w-full h-full bg-linear-to-r from-secondary-hover from-10% via-secondary via-30% to-dark opacity-70" />
         <div className="p-6 space-y-6 absolute text-white text-center w-full md:w-[60%]">
           <h1 className="section-title">
-            {hero.get("hero_title", t("home.heroTitle"))}
+            {hero.get("hero_title", "home.heroTitle", t("home.heroTitle"))}
           </h1>
           <p className="section-subtitle text-white/80">
-            {hero.get("hero_subtitle", t("home.heroSubtitle"))}
+            {hero.get("hero_subtitle", "home.heroSubtitle", t("home.heroSubtitle"))}
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <Link href="/#devis" className="btn-primary text-nowrap">
-              {hero.get("hero_btn_primary", t("actions.quote"))}
+              {hero.get("hero_btn_primary", "actions.quote", t("actions.quote"))}
               <ArrowRightIcon size={20} />
             </Link>
             <Link
               href="/services"
               className="btn-outline-white block text-nowrap"
             >
-              {hero.get("hero_btn_secondary", t("nav.services"))}
+              {hero.get("hero_btn_secondary", "nav.services", t("nav.services"))}
             </Link>
           </div>
         </div>
@@ -87,19 +87,19 @@ export default function Home() {
           className="w-full md:w-1/2 space-y-6 text-md mt-10 md:mt-0 text-dark"
         >
           <h1 className="section-title text-secondary">
-            {about.get("about_title", t("home.expertise"))}
+            {about.get("about_title", "home.expertise", t("home.expertise"))}
           </h1>
-          <p>{about.get("about_intro", t("home.welcome"))}</p>
-          <p>{about.get("about_fleet", t("home.fleet"))}</p>
+          <p>{about.get("about_intro", "home.welcome", t("home.welcome"))}</p>
+          <p>{about.get("about_fleet", "home.fleet", t("home.fleet"))}</p>
           <div className="block sm:flex justify-between items-center">
             <div className="flex items-start gap-3">
               <CheckCircleIcon size={20} className="text-primary" />
               <div>
                 <h2 className="font-extrabold">
-                  {about.get("about_check1_title", t("home.maintenance"))}
+                  {about.get("about_check1_title", "home.maintenance", t("home.maintenance"))}
                 </h2>
                 <p className="text-sm">
-                  {about.get("about_check1_sub", t("home.certified"))}
+                  {about.get("about_check1_sub", "home.certified", t("home.certified"))}
                 </p>
               </div>
             </div>
@@ -107,10 +107,10 @@ export default function Home() {
               <CheckCircleIcon size={20} className="text-primary" />
               <div>
                 <h2 className="font-extrabold">
-                  {about.get("about_check2_title", t("home.flexibility"))}
+                  {about.get("about_check2_title", "home.flexibility", t("home.flexibility"))}
                 </h2>
                 <p className="text-sm">
-                  {about.get("about_check2_sub", t("home.duration"))}
+                  {about.get("about_check2_sub", "home.duration", t("home.duration"))}
                 </p>
               </div>
             </div>
@@ -130,9 +130,10 @@ export default function Home() {
             alt="Icone"
           />
           <SectionHeader
-            title={services.get("services_title", t("home.services"))}
+            title={services.get("services_title", "home.services", t("home.services"))}
             subtitle={services.get(
               "services_subtitle",
+              "home.servicesIntro",
               t("home.servicesIntro"),
             )}
           />
@@ -153,8 +154,8 @@ export default function Home() {
       {/* Section Partner */}
       <div className="container-site py-20">
         <SectionHeader
-          title={partners.get("partners_title", t("home.partners"))}
-          subtitle={partners.get("partners_subtitle", t("home.partnersIntro"))}
+          title={partners.get("partners_title", "home.partners", t("home.partners"))}
+          subtitle={partners.get("partners_subtitle", "home.partnersIntro", t("home.partnersIntro"))}
         />
         <Reveal
           duration={1.5}

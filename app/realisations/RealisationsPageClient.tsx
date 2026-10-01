@@ -14,13 +14,13 @@ const RealisationsPageClient = () => {
   return (
     <>
       <PageHero
-        title={cms.get("realisations_hero_title", t("pages.projects"))}
+        title={cms.get("realisations_hero_title", "pages.projects", t("pages.projects"))}
         url={images.get("img_banner_realisations", "/assets/images/banner.jpg")}
       />
       <div className="container-site py-16">
         <SectionHeader
-          title={cms.get("realisations_title", t("pages.projectTitle"))}
-          subtitle={cms.get("realisations_subtitle", t("home.partnersIntro"))}
+          title={cms.get("realisations_title", "pages.projectTitle", t("pages.projectTitle"))}
+          subtitle={cms.get("realisations_subtitle", "home.partnersIntro", t("home.partnersIntro"))}
         />
 
         <AchievementGallery />

@@ -9,15 +9,9 @@ import Reveal from "./ui/Reveal";
 import { useI18n } from "@/contexts/I18nContext";
 import { DbAchievement } from "@/lib/db";
 
-const VIDEO_KEYS = [
-  "scaffoldingMadone",
-  "aggregatesSedegbe",
-  "portExtension",
-  "aggregatesSedegbeSecond",
-] as const;
 
 export default function VideoGallery() {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const [videos, setVideos] = useState<DbAchievement[]>([]);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
@@ -45,42 +39,49 @@ export default function VideoGallery() {
           distance={80}
           className="grid grid-cols-1 sm:grid-cols-2 gap-6"
         >
-          {videos.map((video, key) => (
+          {videos.map((video) => {
+            /* Chercher la traduction EN du titre via l'id du item (clé i18n) */
+            const i18nKey      = `data.achievements.${video.id}`;
+            const displayTitle = (language === "en")
+              ? (t(i18nKey) !== i18nKey ? t(i18nKey) : video.title)
+              : video.title;
+            /* Traduit aussi la catégorie affichée */
+            const catKey = video.category
+              ? `data.achievements.${video.category.toLowerCase().replace(/[^a-z]/g, "")}`
+              : null;
+            const displayCategory = (language === "en" && catKey)
+              ? (t(catKey) !== catKey ? t(catKey) : video.category)
+              : video.category;
+            return (
             <button
-              key={key}
+              key={video.id}
               onClick={() => setActiveVideo(video.video_url)}
               className="group relative w-full h-64 rounded-xl overflow-hidden shadow-md border-0 cursor-pointer p-0"
             >
               <Image
                 src={video.thumbnail}
-                alt={video.title}
+                alt={displayTitle}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
               />
-
-              {/* Overlay sombre */}
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/55 transition-colors duration-300" />
-
-              {/* Bouton play */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110 shadow-lg">
-                  <PlayIcon
-                    size={28}
-                    className="text-primary ml-1"
-                    fill="currentColor"
-                  />
+                  <PlayIcon size={28} className="text-primary ml-1" fill="currentColor" />
                 </div>
               </div>
-
-              {/* Titre */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-left bg-linear-to-t from-black/70 to-transparent">
+                {displayCategory && (
+                  <p className="text-white/70 text-xs uppercase tracking-wide mb-1">{displayCategory}</p>
+                )}
                 <p className="text-white font-semibold text-sm drop-shadow-md">
-                  {video.title}
+                  {displayTitle}
                 </p>
               </div>
             </button>
-          ))}
+            );
+          })}
         </Reveal>
 
         <Reveal

@@ -9,6 +9,7 @@ import TabNav from "@/components/admin/TabNav";
 import Modal from "@/components/admin/Modal";
 import ConfirmDialog from "@/components/admin/ConfirmDialog";
 import ImageField from "@/components/admin/ImageField";
+import RichEditor from "@/components/admin/RichEditor";
 import { useCrud } from "@/hooks/useCrud";
 import { useAdminCms } from "@/hooks/useAdminCms";
 import type { DbMember, DbValue } from "@/lib/db";
@@ -252,20 +253,17 @@ export default function AdminAboutPage() {
               className="mt-1 w-full px-4 py-3 text-[15px] bg-white border border-gray-200 rounded-lg outline-none focus:border-orange-400 transition"
             />
           </label>
-          <label className="block text-sm font-semibold text-gray-600">
-            Description
-            <textarea
-              rows={3}
-              value={valueModal.item.subtitle ?? ""}
-              onChange={(e) =>
-                setValueModal((m) => ({
-                  ...m,
-                  item: { ...m.item, subtitle: e.target.value },
-                }))
-              }
-              className="mt-1 w-full px-4 py-3 text-[15px] bg-white border border-gray-200 rounded-lg outline-none focus:border-orange-400 transition resize-none"
-            />
-          </label>
+          <RichEditor
+            label="Description"
+            value={valueModal.item.subtitle ?? ""}
+            onChange={(html) =>
+              setValueModal((m) => ({
+                ...m,
+                item: { ...m.item, subtitle: html },
+              }))
+            }
+            placeholder="Décrivez cette valeur fondamentale…"
+          />
           <div className="flex gap-2 pt-1">
             <button
               onClick={() =>

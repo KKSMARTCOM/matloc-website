@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import type { DbValue } from "@/lib/db";
 
 const AboutPageClient = () => {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const cms = useCmsSettings("aboutpage");
   const images = useCmsSettings("images");
 
@@ -41,25 +41,25 @@ const AboutPageClient = () => {
           className="w-full md:w-1/2 space-y-6 text-md text-dark"
         >
           <h1 className="section-title text-secondary">
-            {cms.get("aboutpage_title", t("pages.aboutTitle"))}
+            {cms.get("aboutpage_title", "pages.aboutTitle", t("pages.aboutTitle"))}
           </h1>
-          <p>{cms.get("aboutpage_intro", t("about.intro"))}</p>
-          <p>{cms.get("aboutpage_mission", t("about.mission"))}</p>
+          <p>{cms.get("aboutpage_intro", "about.intro", t("about.intro"))}</p>
+          <p>{cms.get("aboutpage_mission", "about.mission", t("about.mission"))}</p>
           <div className="block sm:flex gap-6 items-center">
             <div className="py-1 pl-4 border-l-4 border-primary">
               <h2 className="section-title text-secondary font-extrabold">
-                {cms.get("aboutpage_stat1_value", "15+")}
+                {cms.get("aboutpage_stat1_value", undefined, "15+")}
               </h2>
               <p className="text-sm uppercase">
-                {cms.get("aboutpage_stat1_label", t("about.experience"))}
+                {cms.get("aboutpage_stat1_label", "about.experience", t("about.experience"))}
               </p>
             </div>
             <div className="py-1 pl-4 border-l-4 border-primary">
               <h2 className="section-title text-secondary font-extrabold">
-                {cms.get("aboutpage_stat2_value", "50+")}
+                {cms.get("aboutpage_stat2_value", undefined, "50+")}
               </h2>
               <p className="text-sm uppercase">
-                {cms.get("aboutpage_stat2_label", t("about.equipment"))}
+                {cms.get("aboutpage_stat2_label", "about.equipment", t("about.equipment"))}
               </p>
             </div>
           </div>
@@ -90,11 +90,8 @@ const AboutPageClient = () => {
       <div className="py-20 bg-gray-50">
         <div className="container-site relative">
           <SectionHeader
-            title={cms.get("aboutpage_values_title", t("pages.values"))}
-            subtitle={cms.get(
-              "aboutpage_values_subtitle",
-              t("about.valuesIntro"),
-            )}
+            title={cms.get("aboutpage_values_title", "pages.values", t("pages.values"))}
+            subtitle={cms.get("aboutpage_values_subtitle", "about.valuesIntro", t("about.valuesIntro"))}
           />
           <Reveal
             duration={1.5}
@@ -102,19 +99,23 @@ const AboutPageClient = () => {
             distance={80}
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           >
-            {values.map((v, key) => (
+            {values.map((v, key) => {
+              /* Mapping titre FR → clé i18n pour la traduction EN */
+              const VALUE_KEYS = ["reliability", "innovation", "safety", "professionalism"];
+              const i18nKey    = VALUE_KEYS[key];
+              const displayTitle    = (language === "en" && i18nKey)
+                ? (t(`data.values.${i18nKey}.title`)    !== `data.values.${i18nKey}.title`    ? t(`data.values.${i18nKey}.title`)    : v.title)
+                : v.title;
+              const displaySubtitle = (language === "en" && i18nKey)
+                ? (t(`data.values.${i18nKey}.subtitle`) !== `data.values.${i18nKey}.subtitle` ? t(`data.values.${i18nKey}.subtitle`) : v.subtitle)
+                : v.subtitle;
+              return (
               <div key={v.id} className="bg-white p-5 space-y-4">
-                {/* <div className="w-10 h-10 flex justify-center items-center bg-primary text-white font-extrabold">
-                  {VALUES[key]?.icon &&
-                    (() => {
-                      const Icon = VALUES[key].icon;
-                      return <Icon size={24} />;
-                    })()}
-                </div> */}
-                <h2 className="font-[600]">{v.title}</h2>
-                <p>{v.subtitle}</p>
+                <h2 className="font-[600]">{displayTitle}</h2>
+                <p>{displaySubtitle}</p>
               </div>
-            ))}
+              );
+            })}
           </Reveal>
         </div>
       </div>
@@ -124,9 +125,9 @@ const AboutPageClient = () => {
         <div className="block md:flex items-start gap-6">
           <Reveal direction="right" className="w-full space-y-3 md:w-1/3">
             <h1 className="section-title text-secondary">
-              {cms.get("aboutpage_team_title", t("pages.team"))}
+              {cms.get("aboutpage_team_title", "pages.team", t("pages.team"))}
             </h1>
-            <p>{cms.get("aboutpage_team_subtitle", t("home.quoteText"))}</p>
+            <p>{cms.get("aboutpage_team_subtitle", "home.quoteText", t("home.quoteText"))}</p>
           </Reveal>
           <Reveal
             direction="left"

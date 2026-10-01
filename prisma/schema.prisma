@@ -25,6 +25,7 @@ model CmsService {
   description String   @default("")
   points      Json     @default("[]")
   imageUrl    String   @default("") @map("image_url")
+  icon        String   @default("wrench")
   href        String   @default("")
   sortOrder   Int      @default(0) @map("sort_order")
   isPublished Boolean  @default(true) @map("is_published")
@@ -94,4 +95,14 @@ model AdminUser {
   createdAt    DateTime @default(now()) @map("created_at")
 
   @@map("admin_users")
+}
+
+model CmsTranslation {
+  key       String
+  lang      String
+  value     String
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@id([key, lang])
+  @@map("cms_translations")
 }

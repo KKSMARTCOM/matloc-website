@@ -9,11 +9,13 @@ import TabNav from "@/components/admin/TabNav";
 import Modal from "@/components/admin/Modal";
 import ConfirmDialog from "@/components/admin/ConfirmDialog";
 import ImageField from "@/components/admin/ImageField";
+import IconPicker, { getIconComponent } from "@/components/admin/IconPicker";
+import RichEditor from "@/components/admin/RichEditor";
 import { useCrud } from "@/hooks/useCrud";
 import { useAdminCms } from "@/hooks/useAdminCms";
 import type { DbService } from "@/lib/db";
 
-const EMPTY: Omit<DbService, "id"> = { title: "", subtitle: "", description: "", points: [], image_url: "", href: "", sort_order: 0, is_published: true };
+const EMPTY: Omit<DbService, "id"> = { title: "", subtitle: "", description: "", points: [], image_url: "", icon: "wrench", href: "", sort_order: 0, is_published: true };
 const TABS = [{ key: "texts", label: "Textes de la page" }, { key: "list", label: "Fiches services" }];
 
 export default function AdminServicesPage() {
@@ -72,8 +74,11 @@ export default function AdminServicesPage() {
                         className="w-20 h-16 object-cover rounded-xl shrink-0" unoptimized />
                     )}
                     <div className="flex-1 min-w-0">
-                      <p className="font-bold text-base text-gray-900">{s.title}</p>
-                      <p className="text-sm text-gray-600 mt-1 line-clamp-2">{s.subtitle}</p>
+                      <div className="flex items-center gap-2 mb-1">
+                        {(() => { const Icon = getIconComponent(s.icon ?? "wrench"); return <Icon size={16} className="text-[#1a2540] shrink-0" />; })()}
+                        <p className="font-bold text-base text-gray-900">{s.title}</p>
+                      </div>
+                      <p className="text-sm text-gray-600 line-clamp-2">{s.subtitle}</p>
                     </div>
                   </div>
 
@@ -121,9 +126,12 @@ export default function AdminServicesPage() {
               </label>
             ))}
             <div className="sm:col-span-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Description</label>
-              <textarea rows={3} value={(modal.item.description as string) ?? ""} onChange={(e) => setField("description", e.target.value)}
-                className="w-full px-3.5 py-3 text-base bg-white border border-gray-200 rounded-xl outline-none focus:border-orange-400 transition resize-none" />
+              <RichEditor
+                label="Description"
+                value={(modal.item.description as string) ?? ""}
+                onChange={(html) => setField("description", html)}
+                placeholder="Décrivez ce service en détail…"
+              />
             </div>
           </div>
 
@@ -132,6 +140,11 @@ export default function AdminServicesPage() {
             value={(modal.item.image_url as string) ?? ""}
             onChange={(url) => setField("image_url", url)}
             hint="Affichée dans les cartes service"
+          />
+
+          <IconPicker
+            value={(modal.item.icon as string) ?? "wrench"}
+            onChange={(key) => setField("icon", key)}
           />
 
           <div>

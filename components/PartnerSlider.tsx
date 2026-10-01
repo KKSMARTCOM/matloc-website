@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import Image from "next/image";
+import { Loader2, Users } from "lucide-react";
+import EmptyState from "./ui/EmptyState";
 import type { DbPartner } from "@/lib/db";
 
 const FALLBACK = [1, 2, 3, 4, 5].map((i) => ({
@@ -16,17 +18,31 @@ const FALLBACK = [1, 2, 3, 4, 5].map((i) => ({
 }));
 
 export default function PartnersSlider() {
-  const [partners, setPartners] = useState<DbPartner[]>(FALLBACK);
+  const [partners, setPartners] = useState<DbPartner[]>([]);
+  const [loading,  setLoading]  = useState(true);
 
   useEffect(() => {
     fetch("/api/admin/partners")
       .then((r) => (r.ok ? r.json() : null))
       .then((d: { items?: DbPartner[] } | null) => {
         const pub = (d?.items ?? []).filter((p) => p.is_published);
-        if (pub.length) setPartners(pub);
+        setPartners(pub);
       })
-      .catch(() => undefined);
+      .catch(() => undefined)
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) return (
+    <div className="flex justify-center py-10"><Loader2 size={20} className="animate-spin text-gray-400" /></div>
+  );
+
+  if (partners.length === 0) return (
+    <EmptyState
+      icon={Users}
+      title="Aucun partenaire pour le moment"
+      description="Nos partenaires seront présentés ici prochainement."
+    />
+  );
 
   const canLoop = partners.length >= 10;
 
