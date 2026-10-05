@@ -76,9 +76,14 @@ const DevisForm = () => {
           </label>
           <div className="relative">
             <input
+              id="name"
+              name="name"
               type="text"
+              autoComplete="name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) =>
+                setName(e.target.value.replace(/[^\p{L}\p{M} '\u2019-]/gu, ""))
+              }
               required
               placeholder={t("forms.fullName")}
               className="w-full px-4 py-2 rounded-lg border border-primary/20 focus:outline-none focus:ring-1 focus:ring-primary transition-all"
@@ -91,11 +96,19 @@ const DevisForm = () => {
           </label>
           <div className="relative">
             <input
+              id="phone"
+              name="phone"
               type="tel"
+              inputMode="numeric"
+              autoComplete="tel-national"
+              pattern="[0-9]{10}"
+              maxLength={10}
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) =>
+                setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))
+              }
               required
-              placeholder="+229..."
+              placeholder="0128310263"
               className="w-full px-4 py-2 rounded-lg border border-primary/20 focus:outline-none focus:ring-1 focus:ring-primary transition-all"
             />
           </div>

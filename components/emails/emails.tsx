@@ -35,6 +35,7 @@ const renderEmail = ({
   intro,
   details,
   formName,
+  signature = false,
 }: {
   name: string;
   email: string;
@@ -43,11 +44,27 @@ const renderEmail = ({
   intro: string;
   details: EmailDetails;
   formName: string;
+  signature?: boolean;
 }) => {
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
   const safeMessage = escapeHtml(message).replace(/\r?\n/g, "<br />");
   const rows = details.map(([label, value]) => detailRow(label, value)).join("");
+  const matlocSignature = signature
+    ? `<table style="width:100%;margin-top:28px;border-collapse:collapse" cellpadding="0" cellspacing="0" role="presentation">
+        <tbody><tr>
+          <td style="width:104px;padding:0 16px 0 0;vertical-align:middle">
+            <img src="cid:matloc-banner" alt="Camion MATLOC" width="88" height="88" style="display:block;width:88px;height:88px;border-radius:50%;border:0" />
+          </td>
+          <td style="border-left:2px solid #f97316;padding:0 0 0 16px;color:#6b7280;font-size:14px;line-height:22px;vertical-align:middle">
+            <strong style="color:#374151;font-size:16px">Service client MATLOC</strong><br />
+            <a href="mailto:info.matloc@gmail.com" style="color:#6b7280;text-decoration:none">info.matloc@gmail.com</a>
+            <span style="color:#f97316;font-weight:700"> | </span>
+            <a href="tel:0128310263" style="color:#6b7280;text-decoration:none">0128310263</a>
+          </td>
+        </tr></tbody>
+      </table>`
+    : "";
 
   return `<!doctype html>
 <html lang="fr">
@@ -66,6 +83,7 @@ const renderEmail = ({
           <h2 style="margin:28px 0 12px;color:#1e2a4a;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.7px">Message</h2>
           <p style="margin:0;padding:16px;background-color:#fff7ed;border-left:4px solid #f97316;border-radius:4px;color:#374151;font-size:14px;line-height:22px">${safeMessage}</p>
           <a href="mailto:${safeEmail}" style="display:inline-block;margin-top:24px;padding:12px 18px;background-color:#f97316;border-radius:6px;color:#ffffff;font-size:14px;font-weight:700;text-decoration:none">Répondre à ${safeName}</a>
+          ${matlocSignature}
         </section>
         <footer style="padding:16px 24px;background-color:#f9fafb;color:#6b7280;font-size:12px;line-height:18px">Cet e-mail a été envoyé automatiquement depuis le formulaire ${escapeHtml(formName)} du site MATLOC.</footer>
       </main>
@@ -89,6 +107,7 @@ export const renderQuoteEmail = ({ name, email, phone, status, service, message 
       ["Service demandé", service || "Non renseigné"],
     ],
     formName: "de demande de devis",
+    signature: true,
   });
 
 export const renderContactEmail = ({ name, email, subject, message }: ContactEmailProps) =>
@@ -104,6 +123,7 @@ export const renderContactEmail = ({ name, email, subject, message }: ContactEma
       ["Sujet", subject || "Non renseigné"],
     ],
     formName: "de contact",
+    signature: true,
   });
 
 export default renderQuoteEmail;

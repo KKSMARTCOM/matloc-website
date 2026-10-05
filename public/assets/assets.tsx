@@ -168,19 +168,9 @@ export const MEMBERS: Member[] = [
     image: "/assets/images/jpg/Andrea.jpeg",
   },
   {
-    name: "Albin ATIGNON",
-    role: "Agent Commercial",
-    image: "/assets/images/jpg/Albin.jpeg",
-  },
-  {
     name: "KOUASSI BOSSOU Emmanuela",
     role: "Community manager",
     image: "/assets/images/jpg/Kouassi.jpeg",
-  },
-  {
-    name: "Appolinaire ATCHOUKOU",
-    role: "Agent Commercial",
-    image: "/assets/images/jpg/Appolinaire.jpeg",
   },
   {
     name: "BODJRÈNOU Abigaël ",
