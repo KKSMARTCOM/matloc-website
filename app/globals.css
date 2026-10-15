@@ -143,6 +143,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Empêche les éléments Reveal encore décalés d'élargir la page sur mobile */
+  overflow-x: clip;
 }
 
 body {

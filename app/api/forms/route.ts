@@ -1,6 +1,7 @@
 import { SERVICE_OPTIONS } from "@/constants/form";
 import { renderContactEmail, renderQuoteEmail } from "@/components/emails/emails";
 import nodemailer from "nodemailer";
+import { join } from "node:path";
 
 type FormPayload = {
   formType: "quote" | "contact";
@@ -47,7 +48,10 @@ export async function POST(request: Request) {
       !name ||
       !email ||
       !message ||
-      !/^\S+@\S+\.\S+$/.test(email)
+      !/^\S+@\S+\.\S+$/.test(email) ||
+      (formType === "quote" &&
+        !/^\p{L}[\p{L}\p{M}]*(?:[ '\u2019-][\p{L}\p{M}]+)*$/u.test(name)) ||
+      (formType === "quote" && !/^\d{10}$/.test(phone))
     ) {
       return Response.json({ error: "Données invalides." }, { status: 400 });
     }
@@ -106,6 +110,21 @@ export async function POST(request: Request) {
       subject: isQuote ? `Demande de devis - ${name}` : `Contact - ${name}`,
       text: details,
       html: htmlEmail,
+      attachments: [
+        {
+          filename: false,
+          path: join(
+            process.cwd(),
+            "public",
+            "assets",
+            "images",
+            "banner-signature.jpg",
+          ),
+          contentType: "image/jpeg",
+          contentDisposition: "inline",
+          cid: "matloc-banner",
+        },
+      ],
     });
 
     return Response.json({ success: true });

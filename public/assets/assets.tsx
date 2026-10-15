@@ -155,57 +155,69 @@ export const VALUES: Values[] = [
   },
 ];
 
-export interface Member {
-  name: string;
-  role: string;
-  image: string;
+export interface MemberSocials {
+  linkedin?: string;
+  x?: string;
+  instagram?: string;
 }
+
+export interface Member {
+  /** Clé i18n : data.members.<id>.role / data.members.<id>.bio */
+  id: string;
+  name: string;
+  image: string;
+  socials: MemberSocials;
+}
+
+// TODO: remplacer les "#" par les vrais liens des profils
+const DEFAULT_SOCIALS: MemberSocials = {
+  linkedin: "#",
+  x: "#",
+  instagram: "#",
+};
 
 export const MEMBERS: Member[] = [
   {
+    id: "executiveAssistant",
     name: "Andréa MALENGUE",
-    role: "Assistante de Direction",
     image: "/assets/images/jpg/Andrea.jpeg",
+    socials: DEFAULT_SOCIALS,
   },
   {
-    name: "Albin ATIGNON",
-    role: "Agent Commercial",
-    image: "/assets/images/jpg/Albin.jpeg",
-  },
-  {
+    id: "communityManager",
     name: "KOUASSI BOSSOU Emmanuela",
-    role: "Community manager",
     image: "/assets/images/jpg/Kouassi.jpeg",
+    socials: DEFAULT_SOCIALS,
   },
   {
-    name: "Appolinaire ATCHOUKOU",
-    role: "Agent Commercial",
-    image: "/assets/images/jpg/Appolinaire.jpeg",
-  },
-  {
-    name: "BODJRÈNOU Abigaël ",
-    role: "Assistante commerciale",
+    id: "salesAssistant",
+    name: "BODJRÈNOU Abigaël",
     image: "/assets/images/jpg/Abigael.jpeg",
+    socials: DEFAULT_SOCIALS,
   },
   {
+    id: "salesLogisticsManager",
     name: "MALIKI Tidjani",
-    role: "Responsable marketing et logistique",
     image: "/assets/images/jpg/Mohamed.jpeg",
+    socials: DEFAULT_SOCIALS,
   },
   {
+    id: "salesAgent",
     name: "BOCOKPEVI Chantal",
-    role: "Agent commerciale",
     image: "/assets/images/jpg/chantal.jpeg",
+    socials: DEFAULT_SOCIALS,
   },
   {
+    id: "accountingAssistant",
     name: "LEKE Landry",
-    role: "Assistant comptable",
     image: "/assets/images/jpg/landry.jpeg",
+    socials: DEFAULT_SOCIALS,
   },
   {
-    name: "AKINDES THIERRY ALBERT ",
-    role: "Directeur Général",
+    id: "ceo",
+    name: "AKINDES THIERRY ALBERT",
     image: "/assets/images/jpg/Thierry.jpeg",
+    socials: DEFAULT_SOCIALS,
   },
 ];
 
