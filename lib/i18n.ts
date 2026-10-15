@@ -31,6 +31,13 @@ const resources = {
         allRights: "Tous droits réservés.",
         madeBy: "Réalisé par",
       },
+      team: {
+        viewProfile: "Voir le profil",
+        role: "Le poste",
+        follow: "Suivre",
+        previous: "Membre précédent",
+        next: "Membre suivant",
+      },
       cta: {
         eyebrow: "PRÊT À DÉMARRER ?",
         title: "Optimisez la performance de votre chantier avec MATLOC",
@@ -200,6 +207,36 @@ const resources = {
               "Une équipe d'experts dédiée à l'accompagnement technique et au conseil stratégique.",
           },
         },
+        members: {
+          executiveAssistant: {
+            role: "Assistante de Direction",
+            bio: "L’assistante de direction assure le soutien administratif et organisationnel de la direction afin de faciliter le bon fonctionnement de l’entreprise. Elle gère les agendas, organise les réunions et les déplacements, rédige les courriers et comptes rendus, assure le suivi des dossiers et des correspondances, coordonne la circulation des informations entre les différents services et veille au respect des échéances. Elle participe également à la préparation des documents de travail, au suivi des activités et à la coordination des tâches administratives, tout en garantissant la confidentialité des informations et en contribuant à l’efficacité de la direction et à la bonne organisation de l’entreprise.",
+          },
+          communityManager: {
+            role: "Community manager",
+            bio: "Le community manager est chargé de gérer et d’animer la présence en ligne de l’entreprise sur les réseaux sociaux et les plateformes numériques. Il assure la création, la rédaction et la publication de contenus attractifs, valorise l’image et les activités de l’entreprise, interagit avec la communauté, répond aux messages et commentaires, et développe l’engagement des abonnés. Il participe également à la mise en œuvre de la stratégie de communication digitale, à la promotion des produits et services, au suivi des performances des publications et à la veille concurrentielle, afin d’accroître la visibilité, la notoriété et l’attractivité de l’entreprise.",
+          },
+          salesAssistant: {
+            role: "Assistante commerciale",
+            bio: "L’assistante commerciale assure le soutien administratif et opérationnel de l’équipe commerciale afin de faciliter le développement des ventes et la satisfaction des clients. Elle participe à la rédaction des devis et des factures, au traitement des commandes, au suivi des dossiers clients, à la gestion des demandes de renseignements et à la relance des prospects et clients. Elle contribue également à la prospection commerciale, à la mise à jour de la base de données clients, à la préparation des rapports d’activités et à la coordination entre les services commerciaux, logistiques et comptables, tout en veillant à la qualité du service client, au respect des délais et à l’atteinte des objectifs commerciaux de l’entreprise.",
+          },
+          salesLogisticsManager: {
+            role: "Responsable commercial et logistique",
+            bio: "Le responsable commercial et logistique assure le développement des activités commerciales de l’entreprise ainsi que la planification, la coordination et le suivi des opérations logistiques. Il est chargé de prospecter de nouveaux clients, de fidéliser les partenaires existants, de négocier les contrats, de superviser les ventes et de veiller à l’atteinte des objectifs commerciaux. Sur le plan logistique, il organise les transports, planifie les livraisons, supervise la gestion du parc automobile et des équipements, optimise l’utilisation des ressources et veille au respect des délais et des exigences de qualité. Il coordonne les équipes commerciales et logistiques, suit les performances, analyse les coûts et propose des actions d’amélioration afin d’accroître la rentabilité, la satisfaction des clients et l’efficacité opérationnelle de l’entreprise.",
+          },
+          salesAgent: {
+            role: "Agent commerciale",
+            bio: "La commerciale est chargée de développer le portefeuille clients de l’entreprise en identifiant de nouvelles opportunités d’affaires, en prospectant de nouveaux clients et en fidélisant les clients existants. Elle présente et valorise les produits et services de l’entreprise, identifie les besoins des clients, négocie les conditions commerciales, élabore des offres et assure le suivi des ventes jusqu’à leur conclusion. Elle participe également à la mise en œuvre de la stratégie commerciale, au suivi des objectifs de vente, à la veille concurrentielle et à la rédaction des rapports d’activités, tout en veillant à la satisfaction des clients, au développement du chiffre d’affaires et au renforcement de la visibilité et de la compétitivité de l’entreprise.",
+          },
+          accountingAssistant: {
+            role: "Assistant comptable",
+            bio: "L’assistant comptable assure le suivi et la gestion des opérations comptables quotidiennes de l’entreprise. Il participe à la saisie et au classement des pièces comptables, au traitement des factures clients et fournisseurs, au suivi des règlements et des encaissements, ainsi qu’à la préparation des déclarations fiscales et des documents financiers. Il contribue également au rapprochement bancaire, à la vérification des dépenses et à la mise à jour des tableaux de suivi comptable, tout en veillant à la fiabilité des informations financières et au respect des procédures internes, sous la supervision du responsable comptable ou de la direction.",
+          },
+          ceo: {
+            role: "Directeur Général",
+            bio: "Le Directeur Général assure la direction, la gestion et le développement global de l’entreprise. Il définit la stratégie et les objectifs de l’organisation, supervise les activités des différents services, coordonne les équipes et veille à la bonne exécution des décisions prises. Il est responsable de la gestion financière, administrative, commerciale et opérationnelle, de l’optimisation des ressources, du suivi des performances et de la rentabilité de l’entreprise. Il représente également l’entreprise auprès des clients, partenaires, fournisseurs et institutions, négocie les accords stratégiques et veille au respect des obligations légales et réglementaires, tout en prenant les décisions nécessaires pour assurer la croissance, la compétitivité et la pérennité de l’entreprise.",
+          },
+        },
         videos: {
           scaffoldingMadone:
             "Installation d'échafaudages à la pharmacie La Madone",
@@ -270,6 +307,13 @@ const resources = {
         social: "Social networks",
         allRights: "All rights reserved.",
         madeBy: "Built by",
+      },
+      team: {
+        viewProfile: "View profile",
+        role: "The role",
+        follow: "Follow",
+        previous: "Previous member",
+        next: "Next member",
       },
       cta: {
         eyebrow: "READY TO GET STARTED?",
@@ -438,6 +482,36 @@ const resources = {
             title: "Professionalism",
             subtitle:
               "A team of experts dedicated to technical support and strategic advice.",
+          },
+        },
+        members: {
+          executiveAssistant: {
+            role: "Executive Assistant",
+            bio: "The executive assistant provides administrative and organisational support to management to keep the company running smoothly. She manages diaries, organises meetings and travel, drafts letters and minutes, follows up on files and correspondence, coordinates the flow of information between departments and ensures deadlines are met. She also helps prepare working documents, monitors activities and coordinates administrative tasks, while guaranteeing the confidentiality of information and contributing to the efficiency of management and the smooth organisation of the company.",
+          },
+          communityManager: {
+            role: "Community Manager",
+            bio: "The community manager runs and grows the company’s online presence on social networks and digital platforms. She creates, writes and publishes engaging content, showcases the company’s image and activities, interacts with the community, answers messages and comments, and builds follower engagement. She also helps implement the digital communication strategy, promotes products and services, tracks post performance and monitors the competition, in order to increase the company’s visibility, reputation and appeal.",
+          },
+          salesAssistant: {
+            role: "Sales Assistant",
+            bio: "The sales assistant provides administrative and operational support to the sales team to drive sales growth and customer satisfaction. She helps prepare quotes and invoices, processes orders, follows up on customer files, handles information requests and follows up with prospects and clients. She also contributes to business prospecting, keeps the customer database up to date, prepares activity reports and coordinates between the sales, logistics and accounting departments, while ensuring quality customer service, meeting deadlines and helping the company reach its sales targets.",
+          },
+          salesLogisticsManager: {
+            role: "Sales & Logistics Manager",
+            bio: "The sales and logistics manager drives the company’s commercial development and plans, coordinates and monitors logistics operations. He prospects new clients, builds loyalty with existing partners, negotiates contracts, supervises sales and ensures commercial targets are met. On the logistics side, he organises transport, schedules deliveries, oversees the vehicle fleet and equipment, optimises the use of resources and ensures deadlines and quality requirements are met. He coordinates the sales and logistics teams, tracks performance, analyses costs and proposes improvements to increase profitability, customer satisfaction and operational efficiency.",
+          },
+          salesAgent: {
+            role: "Sales Representative",
+            bio: "The sales representative grows the company’s client portfolio by identifying new business opportunities, prospecting new clients and retaining existing ones. She presents and promotes the company’s products and services, identifies client needs, negotiates commercial terms, prepares offers and follows sales through to closing. She also helps implement the sales strategy, tracks sales targets, monitors the competition and writes activity reports, while ensuring client satisfaction, growing revenue and strengthening the company’s visibility and competitiveness.",
+          },
+          accountingAssistant: {
+            role: "Accounting Assistant",
+            bio: "The accounting assistant monitors and manages the company’s day-to-day accounting operations. He records and files accounting documents, processes customer and supplier invoices, tracks payments and receipts, and helps prepare tax returns and financial documents. He also contributes to bank reconciliations, expense checks and the updating of accounting dashboards, while ensuring the reliability of financial information and compliance with internal procedures, under the supervision of the chief accountant or management.",
+          },
+          ceo: {
+            role: "Chief Executive Officer",
+            bio: "The CEO leads, manages and drives the overall development of the company. He defines the organisation’s strategy and objectives, oversees the activities of the various departments, coordinates the teams and ensures decisions are properly carried out. He is responsible for financial, administrative, commercial and operational management, for optimising resources, and for tracking the company’s performance and profitability. He also represents the company before clients, partners, suppliers and institutions, negotiates strategic agreements and ensures compliance with legal and regulatory obligations, while making the decisions needed to secure the company’s growth, competitiveness and long-term success.",
           },
         },
         videos: {

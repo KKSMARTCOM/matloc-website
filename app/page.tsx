@@ -58,7 +58,7 @@ export default function Home() {
           <div className="absolute -bottom-3 -right-3 bg-secondary w-40 h-20 rounded-sm" />
           <div className="absolute inset-0 border-6 border-white bg-gray-300 w-full h-full shadow-xl rounded-md overflow-hidden">
             <Image
-              src="/assets/images/jpg/AboutHome.jpeg"
+              src="/assets/images/jpg/equipe_new.jpeg"
               alt="About Image"
               fill
               className="object-cover w-full h-full"
