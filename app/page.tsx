@@ -182,7 +182,7 @@ export default function Home() {
       <div className="container-site py-16">
         <SectionHeader
           title={t("home.reviews")}
-          subtitle={t("home.reviewsIntro")}
+          /* subtitle={t("home.reviewsIntro")} */
         />
         <GoogleReviews />
       </div>
