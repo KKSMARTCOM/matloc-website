@@ -25,7 +25,7 @@ export default function VideoGallery() {
       <section className="container-site py-20">
         <SectionHeader
           title={t("pages.projects")}
-          subtitle={t("home.partnersIntro")}
+          /* subtitle={t("home.partnersIntro")} */
         />
 
         <Reveal

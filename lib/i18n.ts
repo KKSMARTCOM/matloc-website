@@ -42,7 +42,7 @@ const resources = {
         eyebrow: "PRÊT À DÉMARRER ?",
         title: "Optimisez la performance de votre chantier avec MATLOC",
         subtitle:
-          "Contactez nos experts pour une analyse personnalisée de vos besoins en levage et transport. Devis gratuit sous 24h.",
+          "Contactez nos experts pour une analyse personnalisée de vos besoins. Devis gratuit sous 24h.",
       },
       forms: {
         messageTitle: "Envoyez un message",
@@ -69,7 +69,7 @@ const resources = {
       },
       footer: {
         description:
-          "Expert en location d'échafaudages, transport et équipements BTP.",
+          "Expert en solutions de location d'échafaudages, de transport et d'équipements BTP.",
         quickLinks: "Liens rapides",
         services: "Nos services",
         contact: "Contact",
@@ -81,19 +81,19 @@ const resources = {
           "Tout pour vos travaux de construction au Bénin. Des solutions flexibles adaptées à l’envergure de vos chantiers.",
         expertise: "Expertise BTP",
         welcome:
-          "Bienvenue chez MATLOC, votre partenaire de confiance dans la location d’échafaudages, de camions bennes, d’engins et d’équipements spécialisés pour le secteur du Bâtiment et des Travaux Publics.",
+          "Bienvenue chez MATLOC, votre partenaire de confiance pour la location d’échafaudages, de camions bennes, d’engins et d’équipements spécialisés dans le secteur du Bâtiment et des Travaux Publics.",
         fleet:
           "Grâce à une flotte diversifiée et régulièrement entretenue, nous permettons à nos clients de réaliser leurs travaux de construction, de terrassement ou d’infrastructure de manière efficace, économique et en toute sécurité. Notre expertise et notre engagement envers l’innovation nous positionnent comme un acteur clé dans la réussite de vos projets.",
         maintenance: "Maintenance régulière",
         certified: "Équipements certifiés et fiables",
         flexibility: "Flexibilité totale",
-        duration: "Location courte ou longue durée",
+        duration: "Location courte, moyenne et longue durée",
         services: "Nos services",
         servicesIntro:
           "Location d'engins de chantier et prestations BTP clé en main, du terrassement au gros œuvre, avec du matériel entretenu et des équipes qualifiées",
         partners: "Nos partenaires",
         partnersIntro:
-          "Entreprises, promoteurs et maîtres d'ouvrage qui nous confient leurs chantiers pour la location d'engins et l'exécution des travaux",
+          "Entreprises, promoteurs et maîtres d'ouvrage qui nous confient leurs chantiers pour la location d'échafaudages, de transport et d'équipements BTP.",
         quote: "Devis",
         quoteIntro: "Demandez une estimation gratuite pour votre projet.",
         quoteText:
@@ -137,7 +137,7 @@ const resources = {
       data: {
         services: {
           echafaudages: {
-            title: "Solutions de travail en hauteur",
+            title: "Solutions de travaux en hauteur",
             subtitle:
               "Large gamme d'échafaudages robustes, modulables et de solutions d'élévation pour tous vos besoins de travaux en hauteur.",
             description:
@@ -319,7 +319,7 @@ const resources = {
         eyebrow: "READY TO GET STARTED?",
         title: "Optimize your site performance with MATLOC",
         subtitle:
-          "Contact our experts for a personalized assessment of your lifting and transport needs. Free quote within 24 hours.",
+          "Contact our experts for a personalized assessment of your needs. Free quote within 24 hours.",
       },
       forms: {
         messageTitle: "Send us a message",
@@ -346,7 +346,7 @@ const resources = {
       },
       footer: {
         description:
-          "Expert in scaffolding rental, transport and construction equipment.",
+          "Expert in scaffolding, transportation, and construction equipment rental solutions.",
         quickLinks: "Quick links",
         services: "Our services",
         contact: "Contact",
@@ -364,13 +364,13 @@ const resources = {
         maintenance: "Regular maintenance",
         certified: "Certified and reliable equipment",
         flexibility: "Total flexibility",
-        duration: "Short or long-term rental",
+        duration: "Short, medium and long-term rental",
         services: "Our services",
         servicesIntro:
           "Construction machinery rental and turnkey services, from earthworks to structural work, with maintained equipment and qualified teams",
         partners: "Our partners",
         partnersIntro:
-          "Companies, developers and project owners who trust us with their equipment rental and construction projects",
+          "Companies, developers, and project owners who entrust us with their construction projects for the rental of scaffolding, transportation, and construction equipment.",
         quote: "Quote",
         quoteIntro: "Request a free estimate for your project.",
         quoteText:
